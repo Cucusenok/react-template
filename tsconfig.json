@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./src/",
     "paths": {
-      "@components/*" : ["./components/*"]
+      "@components/*" : ["./components/*"],
+      "@gql/*" : ["./gql/*"]
     },
     "target": "es5",
     "lib": [
