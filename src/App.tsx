@@ -6,7 +6,6 @@ import {MainButton} from "@components/MainButton/MainButton";
 function App() {
   return (
     <div className="App">
-      <MainButton />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
