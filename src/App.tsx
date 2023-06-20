@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import {GraphQLExample} from "@components/GraphQLExample/GraphQLExample";
+import {FragmentQueryExample} from "@components/FragmentQueryExample/FragmentQueryExample";
 
 const client = new ApolloClient({
   uri: "https://spacex-production.up.railway.app",
@@ -14,6 +15,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
+          <FragmentQueryExample />
           <GraphQLExample />
           <img src={logo} className="App-logo" alt="logo" />
           <p>

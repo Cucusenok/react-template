@@ -1,0 +1,30 @@
+fragment companyLeaders on Info {
+  ceo
+  coo
+  cto
+}
+
+query GetCompanyInfoWithFragment {
+  company {
+    ...companyLeaders
+    headquarters {
+      address
+      city
+      state
+    }
+  }
+
+}
+
+query CompanyInfoQuery {
+  company {
+    ceo
+    coo
+    cto
+    headquarters {
+      address
+      city
+      state
+    }
+  }
+}

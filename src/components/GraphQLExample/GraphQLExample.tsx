@@ -2,6 +2,7 @@ import React from "react";
 import { CircularProgress } from "@mui/material";
 import {useGetSeoQuery} from "@gql/graphql";
 
+
 export const GraphQLExample = () => {
     const { data, error, loading } = useGetSeoQuery();
 
