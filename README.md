@@ -31,7 +31,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run eject`
 
-
 ### `npm run storybook`
 
 See the section about [Storybook](https://storybook.js.org/) for more information.
