@@ -5,7 +5,7 @@
         "jest": true
     },
     "ignorePatterns": [
-        "graphql.tsx", "BadCode.tsx", "fragment-masking.ts"
+        "graphql.tsx", "BadCode.tsx", "fragment-masking.ts", "craco.config.js"
     ],
     "extends": [
         // "standard-with-typescript",
@@ -41,8 +41,8 @@
         "perfectionist/sort-objects": [
             "error",
             {
-            "type": "line-length",
-            "order": "asc"
+                "type": "line-length",
+                "order": "asc"
             }
         ],
         "import/extensions": [
@@ -66,7 +66,7 @@
         },
         "import/resolver": {
             "typescript": {
-                "alwaysTryTypes": true, // always try to resolve types under <root>@types directory even it doesn't contain any source code, like @types/unist
+                "alwaysTryTypes": true,
                 "project": "./tsconfig.json"
             }
         }

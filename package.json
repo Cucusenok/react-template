@@ -32,7 +32,10 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": [
+      "prettier --write --ignore-unknown",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": [

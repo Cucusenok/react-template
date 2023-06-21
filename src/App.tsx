@@ -1,15 +1,15 @@
+import { FragmentQueryExample } from '@components/FragmentQueryExample/FragmentQueryExample';
+import { ComponentWithQuery } from '@components/ComponentWithQuery/ComponentWithQuery';
+import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
+import { GraphQLExample } from '@components/GraphQLExample/GraphQLExample';
 import React from 'react';
 
 import logo from './logo.svg';
 import './App.css';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { GraphQLExample } from '@components/GraphQLExample/GraphQLExample';
-import { FragmentQueryExample } from '@components/FragmentQueryExample/FragmentQueryExample';
-import { ComponentWithQuery } from '@components/ComponentWithQuery/ComponentWithQuery';
 
 const client = new ApolloClient({
-  uri: 'https://spacex-production.up.railway.app',
   cache: new InMemoryCache(),
+  uri: 'https://spacex-production.up.railway.app',
 });
 
 function App() {
@@ -20,15 +20,15 @@ function App() {
           <FragmentQueryExample />
           <GraphQLExample />
           <ComponentWithQuery />
-          <img src={logo} className="App-logo" alt="logo" />
+          <img className="App-logo" alt="logo" src={logo} />
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
           <a
-            className="App-link"
             href="https://reactjs.org"
-            target="_blank"
             rel="noopener noreferrer"
+            className="App-link"
+            target="_blank"
           >
             Learn React
           </a>
