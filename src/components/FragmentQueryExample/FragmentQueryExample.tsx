@@ -2,7 +2,7 @@ import React from "react";
 import {Address, useGetCompanyInfoWithFragmentQuery} from "@gql/graphql";
 
 const getAddressCity = (address: Address) => {
-    return address.city
+    return address?.city
 }
 export const FragmentQueryExample = () => {
     const { loading, data, error } = useGetCompanyInfoWithFragmentQuery();

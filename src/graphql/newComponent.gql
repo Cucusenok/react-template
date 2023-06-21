@@ -1,0 +1,5 @@
+query NewComponent {
+  company {
+    adress
+  }
+}
