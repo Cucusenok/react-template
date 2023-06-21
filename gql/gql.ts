@@ -13,7 +13,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "query GetLaunches {\n  launchesPast(limit: 10) {\n    ships {\n      name\n      home_port\n      image\n    }\n  }\n}": types.GetLaunchesDocument,
+  'query GetLaunches {\n  launchesPast(limit: 10) {\n    ships {\n      name\n      home_port\n      image\n    }\n  }\n}':
+    types.GetLaunchesDocument,
 };
 
 /**
@@ -33,10 +34,13 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query GetLaunches {\n  launchesPast(limit: 10) {\n    ships {\n      name\n      home_port\n      image\n    }\n  }\n}"): (typeof documents)["query GetLaunches {\n  launchesPast(limit: 10) {\n    ships {\n      name\n      home_port\n      image\n    }\n  }\n}"];
+export function graphql(
+  source: 'query GetLaunches {\n  launchesPast(limit: 10) {\n    ships {\n      name\n      home_port\n      image\n    }\n  }\n}'
+): (typeof documents)['query GetLaunches {\n  launchesPast(limit: 10) {\n    ships {\n      name\n      home_port\n      image\n    }\n  }\n}'];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
 }
 
-export type DocumentType<TDocumentNode extends DocumentNode<any, any>> = TDocumentNode extends DocumentNode<  infer TType,  any>  ? TType  : never;
+export type DocumentType<TDocumentNode extends DocumentNode<any, any>> =
+  TDocumentNode extends DocumentNode<infer TType, any> ? TType : never;

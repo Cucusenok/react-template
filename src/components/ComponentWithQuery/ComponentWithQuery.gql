@@ -1,7 +1,7 @@
 query GetCompanyLeaders {
-    company {
-        ceo
-        cto
-        coo
-    }
+  company {
+    ceo
+    cto
+    coo
+  }
 }

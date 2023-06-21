@@ -1,22 +1,25 @@
-
 import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: "https://spacex-production.up.railway.app",
-  documents: "src/**/*.gql",
+  documents: 'src/**/*.gql',
+  schema: 'https://spacex-production.up.railway.app',
   generates: {
-    "./src/gql/graphql.tsx": {
-      plugins: [ 'typescript', 'typescript-operations', 'typescript-react-apollo']
+    './src/gql/schema.gql': {
+      plugins: ['schema-ast'],
     },
-    "./graphql.schema.json": {
-      plugins: ["introspection"]
+    './graphql.schema.json': {
+      plugins: ['introspection'],
     },
 
-    "./src/gql/schema.gql": {
-      plugins: ["schema-ast"]
-    }
-  }
+    './src/gql/graphql.tsx': {
+      plugins: [
+        'typescript',
+        'typescript-operations',
+        'typescript-react-apollo',
+      ],
+    },
+  },
 };
 
 export default config;
