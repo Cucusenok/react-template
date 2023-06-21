@@ -1,0 +1,7 @@
+query GetCompanyLeaders {
+  company {
+    ceo
+    cto
+    coo
+  }
+}
