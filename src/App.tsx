@@ -35,7 +35,9 @@ function App() {
             Learn React
           </a>
         </header>
-        <div>{/* <a>Какая-то ссылк</a> */}</div>
+        <div>
+          <a href="https://google.com">Какая-то ссылк</a>
+        </div>
       </div>
     </ApolloProvider>
   );
