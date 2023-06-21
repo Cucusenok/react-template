@@ -11,5 +11,11 @@ export const GraphQLExample = () => {
   if (error) {
     return <div>error</div>;
   }
-  return <div> {JSON.stringify(data)} </div>;
+  return (
+    <div>
+      {' '}
+      {JSON.stringify(data)}
+      {' '}
+    </div>
+  );
 };

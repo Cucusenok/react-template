@@ -5,7 +5,7 @@
         "jest": true
     },
     "ignorePatterns": [
-        "graphql.tsx", "BadCode.tsx", "fragment-masking.ts"
+        "graphql.tsx", "BadCode.tsx", "fragment-masking.ts", "*.stories.ts", "setupTests.ts", "index.tsx"
     ],
     "extends": [
         // "standard-with-typescript",
@@ -31,6 +31,7 @@
     "rules": {
         "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         "import/prefer-default-export": "off",
+        "react/jsx-no-useless-fragment": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-uses-react": "off",
         "react/require-default-props": "off",
@@ -45,36 +46,28 @@
             "order": "asc"
             }
         ],
+        "import/no-unresolved": "off",
         "import/extensions": [
             "error",
             "ignorePackages",
             {
+                "": "never",
                 "js": "never",
                 "jsx": "never",
                 "ts": "never",
                 "tsx": "never"
             }
-        ],
-        "import/no-unresolved": [
-            2,
-            { "caseSensitive": false }
         ]
     },
     "settings": {
-        "import/parsers": {
-            "@typescript-eslint/parser": [".ts", ".tsx"]
+        "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
         },
-        "import/resolver": {
-            "typescript": {
-                "alwaysTryTypes": true, // always try to resolve types under <root>@types directory even it doesn't contain any source code, like @types/unist
-                "project": "./tsconfig.json"
-            },
-            "alias": {
-                "map": [
-                    ["@components/*", "./components/*"],
-                    ["@gql/*", "./gql/*"]
-                ]
-            }
+        "alias": {
+            "map": [
+                ["@components/*", "./components/*"],
+                ["@gql/*", "./gql/*"]
+            ]
         }
     }
 }
