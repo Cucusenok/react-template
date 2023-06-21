@@ -1322,10 +1322,15 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
 };
 
+export type GetCompanyLeadersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCompanyLeadersQuery = { __typename?: 'Query', company?: { __typename?: 'Info', ceo?: string | null, cto?: string | null, coo?: string | null } | null };
+
 export type GetSeoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetSeoQuery = { __typename?: 'Query', company?: { __typename?: 'Info', ceo?: string | null } | null };
+export type GetSeoQuery = { __typename?: 'Query', company?: { __typename?: 'Info', ceo?: string | null, cto?: string | null, coo?: string | null } | null };
 
 export type CompanyLeadersFragment = { __typename?: 'Info', ceo?: string | null, coo?: string | null, cto?: string | null };
 
@@ -1346,10 +1351,48 @@ export const CompanyLeadersFragmentDoc = gql`
   cto
 }
     `;
+export const GetCompanyLeadersDocument = gql`
+    query GetCompanyLeaders {
+  company {
+    ceo
+    cto
+    coo
+  }
+}
+    `;
+
+/**
+ * __useGetCompanyLeadersQuery__
+ *
+ * To run a query within a React component, call `useGetCompanyLeadersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCompanyLeadersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCompanyLeadersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetCompanyLeadersQuery(baseOptions?: Apollo.QueryHookOptions<GetCompanyLeadersQuery, GetCompanyLeadersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCompanyLeadersQuery, GetCompanyLeadersQueryVariables>(GetCompanyLeadersDocument, options);
+      }
+export function useGetCompanyLeadersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCompanyLeadersQuery, GetCompanyLeadersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCompanyLeadersQuery, GetCompanyLeadersQueryVariables>(GetCompanyLeadersDocument, options);
+        }
+export type GetCompanyLeadersQueryHookResult = ReturnType<typeof useGetCompanyLeadersQuery>;
+export type GetCompanyLeadersLazyQueryHookResult = ReturnType<typeof useGetCompanyLeadersLazyQuery>;
+export type GetCompanyLeadersQueryResult = Apollo.QueryResult<GetCompanyLeadersQuery, GetCompanyLeadersQueryVariables>;
 export const GetSeoDocument = gql`
     query GetSeo {
   company {
     ceo
+    cto
+    coo
   }
 }
     `;

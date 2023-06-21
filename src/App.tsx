@@ -4,6 +4,7 @@ import './App.css';
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import {GraphQLExample} from "@components/GraphQLExample/GraphQLExample";
 import {FragmentQueryExample} from "@components/FragmentQueryExample/FragmentQueryExample";
+import {ComponentWithQuery} from "@components/ComponentWithQuery/ComponentWithQuery";
 
 const client = new ApolloClient({
   uri: "https://spacex-production.up.railway.app",
@@ -17,6 +18,7 @@ function App() {
         <header className="App-header">
           <FragmentQueryExample />
           <GraphQLExample />
+          <ComponentWithQuery />
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.tsx</code> and save to reload.

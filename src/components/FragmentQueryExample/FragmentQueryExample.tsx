@@ -6,6 +6,6 @@ const getAddressCity = (address: Address) => {
 }
 export const FragmentQueryExample = () => {
     const { loading, data, error } = useGetCompanyInfoWithFragmentQuery();
-
+    if(loading) return null
     return <div>{ getAddressCity(data?.company?.headquarters as Address) }</div>
 }

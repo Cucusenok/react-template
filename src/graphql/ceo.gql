@@ -1,5 +1,7 @@
 query GetSeo {
   company {
     ceo
+    cto
+    coo
   }
 }
