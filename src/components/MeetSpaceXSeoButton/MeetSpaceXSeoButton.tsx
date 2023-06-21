@@ -10,7 +10,8 @@ export const MeetSpaceXSeoButton = ({ onClick }: MeetSpaceXSeoButtonProps) => {
   return (
     <Button onClick={onClick}>
       <RequestLoader loading={loading} error={error}>
-        Meet seo: {data?.company?.ceo}
+        Meet seo:
+        {data?.company?.ceo}
       </RequestLoader>
     </Button>
   );

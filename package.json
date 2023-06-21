@@ -29,7 +29,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "codegen": "graphql-codegen --config codegen.ts",
-    "lint": "eslint --ext .js --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore .",
     "prepare": "husky install"
   },
   "lint-staged": {
