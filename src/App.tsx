@@ -35,9 +35,7 @@ function App() {
             Learn React
           </a>
         </header>
-        <div>
-          <a>Какая-то ссылк</a>
-        </div>
+        <div>{/* <a>Какая-то ссылк</a> */}</div>
       </div>
     </ApolloProvider>
   );

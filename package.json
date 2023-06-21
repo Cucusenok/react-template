@@ -35,6 +35,7 @@
   "lint-staged": {
     "**/*": [
       "prettier --write --ignore-unknown",
+      "eslint --quiet --ext .ts,.jsx,.tsx  .",
       "git add"
     ]
   },

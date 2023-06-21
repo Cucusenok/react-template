@@ -5,7 +5,7 @@
         "jest": true
     },
     "ignorePatterns": [
-        "graphql.tsx", "BadCode.tsx", "fragment-masking.ts", "*.stories.ts", "setupTests.ts", "index.tsx"
+        "README.MD","graphql.tsx", "BadCode.tsx", "fragment-masking.ts", "*.stories.ts", "setupTests.ts", "index.tsx", "*.json"
     ],
     "extends": [
         // "standard-with-typescript",
@@ -15,7 +15,8 @@
         "plugin:react/recommended",
         "plugin:jsx-a11y/recommended",
         "airbnb",
-        "plugin:perfectionist/recommended-line-length"
+        "plugin:perfectionist/recommended-line-length",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
