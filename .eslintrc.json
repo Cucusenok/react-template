@@ -68,6 +68,12 @@
             "typescript": {
                 "alwaysTryTypes": true,
                 "project": "./tsconfig.json"
+            },
+            "alias": {
+                "map": [
+                    ["@components/*", "./components/*"],
+                    ["@gql/*", "./gql/*"]
+                ]
             }
         }
     }
