@@ -1,5 +1,5 @@
 import React from "react";
-import {Address, useGetCompanyInfoWithFragmentQuery} from "@gql/graphql";
+import { Address, useGetCompanyInfoWithFragmentQuery } from "@gql/graphql";
 
 const getAddressCity = (address: Address) => {
     return address?.city

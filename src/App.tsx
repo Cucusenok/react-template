@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import {GraphQLExample} from "@components/GraphQLExample/GraphQLExample";
-import {FragmentQueryExample} from "@components/FragmentQueryExample/FragmentQueryExample";
-import { GraphQLNewComponent } from '@components/GraphQLNewComponent/GraphQLNewComponent';
+// import { GraphQLExample } from "@components/GraphQLExample/GraphQLExample";
+// import { FragmentQueryExample } from "@components/FragmentQueryExample/FragmentQueryExample";
+// import { GraphQLNewComponent } from '@components/GraphQLNewComponent/GraphQLNewComponent';
 import { SignIn } from "./SignIn";
 import { Register } from "./Register";
 import "./App.css";
@@ -19,15 +19,15 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
-          <FragmentQueryExample />
-          <GraphQLExample />
+          {/* <FragmentQueryExample /> */}
+          {/* <GraphQLExample /> */}
           {isAuth ? (
             <SignIn setIsAuth={setIsAuth} />
           ) : (
             <Register setIsAuth={setIsAuth} />
           )}
 
-          <GraphQLNewComponent />
+          {/* <GraphQLNewComponent /> */}
         </header>
       </div>
     </ApolloProvider>
