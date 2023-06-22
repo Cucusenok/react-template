@@ -12,11 +12,12 @@ export const Button = styled('button')(({ theme }) => ({
 }));
 
 export const CEOName = styled('span')(({ theme }) => ({
-  fontSize: '16px',
-  fontWeight: 'bold',
-  padding: '15px 20px',
-  whiteSpace: 'nowrap',
-  borderRadius: '10px',
   color: 'green',
+  [theme.breakpoints.up('lg')]: {},
+}));
+
+export const ErrorField = styled('span')(({ theme }) => ({
+  color: 'red',
+  background: 'red',
   [theme.breakpoints.up('lg')]: {},
 }));

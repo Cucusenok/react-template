@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export default gql`
+export const GetSpaceXSeoQuery = gql`
   query GetSpaceXSeo {
     company {
       ceo
