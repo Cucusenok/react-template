@@ -2,23 +2,36 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  Date: { input: any; output: any; }
-  ObjectID: { input: any; output: any; }
-  timestamptz: { input: any; output: any; }
-  uuid: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  Date: { input: any; output: any };
+  ObjectID: { input: any; output: any };
+  timestamptz: { input: any; output: any };
+  uuid: { input: any; output: any };
 };
 
 export type Address = {
@@ -460,17 +473,14 @@ export type Mutation = {
   update_users?: Maybe<Users_Mutation_Response>;
 };
 
-
 export type MutationDelete_UsersArgs = {
   where: Users_Bool_Exp;
 };
-
 
 export type MutationInsert_UsersArgs = {
   objects: Array<Users_Insert_Input>;
   on_conflict?: InputMaybe<Users_On_Conflict>;
 };
-
 
 export type MutationUpdate_UsersArgs = {
   _set?: InputMaybe<Users_Set_Input>;
@@ -585,11 +595,9 @@ export type Query = {
   users_by_pk?: Maybe<Users>;
 };
 
-
 export type QueryCapsuleArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryCapsulesArgs = {
   find?: InputMaybe<CapsulesFind>;
@@ -599,7 +607,6 @@ export type QueryCapsulesArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryCapsulesPastArgs = {
   find?: InputMaybe<CapsulesFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -607,7 +614,6 @@ export type QueryCapsulesPastArgs = {
   order?: InputMaybe<Scalars['String']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type QueryCapsulesUpcomingArgs = {
   find?: InputMaybe<CapsulesFind>;
@@ -617,11 +623,9 @@ export type QueryCapsulesUpcomingArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryCoreArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryCoresArgs = {
   find?: InputMaybe<CoresFind>;
@@ -631,7 +635,6 @@ export type QueryCoresArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryCoresPastArgs = {
   find?: InputMaybe<CoresFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -639,7 +642,6 @@ export type QueryCoresPastArgs = {
   order?: InputMaybe<Scalars['String']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type QueryCoresUpcomingArgs = {
   find?: InputMaybe<CoresFind>;
@@ -649,17 +651,14 @@ export type QueryCoresUpcomingArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryDragonArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryDragonsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type QueryHistoriesArgs = {
   find?: InputMaybe<HistoryFind>;
@@ -669,7 +668,6 @@ export type QueryHistoriesArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryHistoriesResultArgs = {
   find?: InputMaybe<HistoryFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -678,37 +676,30 @@ export type QueryHistoriesResultArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryHistoryArgs = {
   id: Scalars['ID']['input'];
 };
 
-
 export type QueryLandpadArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryLandpadsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryLaunchArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryLaunchLatestArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryLaunchNextArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type QueryLaunchesArgs = {
   find?: InputMaybe<LaunchFind>;
@@ -718,7 +709,6 @@ export type QueryLaunchesArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryLaunchesPastArgs = {
   find?: InputMaybe<LaunchFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -726,7 +716,6 @@ export type QueryLaunchesPastArgs = {
   order?: InputMaybe<Scalars['String']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type QueryLaunchesPastResultArgs = {
   find?: InputMaybe<LaunchFind>;
@@ -736,7 +725,6 @@ export type QueryLaunchesPastResultArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryLaunchesUpcomingArgs = {
   find?: InputMaybe<LaunchFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -745,22 +733,18 @@ export type QueryLaunchesUpcomingArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryLaunchpadArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryLaunchpadsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryMissionArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryMissionsArgs = {
   find?: InputMaybe<MissionsFind>;
@@ -768,18 +752,15 @@ export type QueryMissionsArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryMissionsResultArgs = {
   find?: InputMaybe<MissionsFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryPayloadArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryPayloadsArgs = {
   find?: InputMaybe<PayloadsFind>;
@@ -789,28 +770,23 @@ export type QueryPayloadsArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryRocketArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryRocketsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryRocketsResultArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryShipArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryShipsArgs = {
   find?: InputMaybe<ShipsFind>;
@@ -820,7 +796,6 @@ export type QueryShipsArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryShipsResultArgs = {
   find?: InputMaybe<ShipsFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -828,7 +803,6 @@ export type QueryShipsResultArgs = {
   order?: InputMaybe<Scalars['String']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type QueryUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
@@ -838,7 +812,6 @@ export type QueryUsersArgs = {
   where?: InputMaybe<Users_Bool_Exp>;
 };
 
-
 export type QueryUsers_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -846,7 +819,6 @@ export type QueryUsers_AggregateArgs = {
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
 };
-
 
 export type QueryUsers_By_PkArgs = {
   id: Scalars['uuid']['input'];
@@ -1074,7 +1046,6 @@ export type Subscription = {
   users_by_pk?: Maybe<Users>;
 };
 
-
 export type SubscriptionUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -1083,7 +1054,6 @@ export type SubscriptionUsersArgs = {
   where?: InputMaybe<Users_Bool_Exp>;
 };
 
-
 export type SubscriptionUsers_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -1091,7 +1061,6 @@ export type SubscriptionUsers_AggregateArgs = {
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
 };
-
 
 export type SubscriptionUsers_By_PkArgs = {
   id: Scalars['uuid']['input'];
@@ -1108,7 +1077,7 @@ export enum Conflict_Action {
   /** ignore the insert on this row */
   Ignore = 'ignore',
   /** update the row with the given values */
-  Update = 'update'
+  Update = 'update',
 }
 
 /** column ordering options */
@@ -1124,7 +1093,7 @@ export enum Order_By {
   /** in the descending order, nulls first */
   DescNullsFirst = 'desc_nulls_first',
   /** in the descending order, nulls last */
-  DescNullsLast = 'desc_nulls_last'
+  DescNullsLast = 'desc_nulls_last',
 }
 
 /** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
@@ -1165,7 +1134,6 @@ export type Users_Aggregate_Fields = {
   min?: Maybe<Users_Min_Fields>;
 };
 
-
 /** aggregate fields of "users" */
 export type Users_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Users_Select_Column>>;
@@ -1204,7 +1172,7 @@ export enum Users_Constraint {
   Or = 'or',
   Primary = 'primary',
   Unique = 'unique',
-  UsersPkey = 'users_pkey'
+  UsersPkey = 'users_pkey',
 }
 
 /** input type for inserting data into table "users" */
@@ -1287,7 +1255,7 @@ export enum Users_Select_Column {
   Name = 'name',
   Rocket = 'rocket',
   Timestamp = 'timestamp',
-  Twitter = 'twitter'
+  Twitter = 'twitter',
 }
 
 /** input type for updating data in table "users" */
@@ -1306,7 +1274,7 @@ export enum Users_Update_Column {
   Name = 'name',
   Rocket = 'rocket',
   Timestamp = 'timestamp',
-  Twitter = 'twitter'
+  Twitter = 'twitter',
 }
 
 /** expression to compare columns of type uuid. All fields are combined with logical 'AND'. */
@@ -1322,37 +1290,214 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
 };
 
-export type GetSeoQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetCompanyLeadersQueryVariables = Exact<{ [key: string]: never }>;
 
+export type GetCompanyLeadersQuery = {
+  __typename?: 'Query';
+  company?: {
+    __typename?: 'Info';
+    ceo?: string | null;
+    cto?: string | null;
+    coo?: string | null;
+  } | null;
+};
 
-export type GetSeoQuery = { __typename?: 'Query', company?: { __typename?: 'Info', ceo?: string | null } | null };
+export type GetSpaceXSeoQueryVariables = Exact<{ [key: string]: never }>;
 
-export type CompanyLeadersFragment = { __typename?: 'Info', ceo?: string | null, coo?: string | null, cto?: string | null };
+export type GetSpaceXSeoQuery = {
+  __typename?: 'Query';
+  company?: { __typename?: 'Info'; ceo?: string | null } | null;
+};
 
-export type GetCompanyInfoWithFragmentQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetSeoQueryVariables = Exact<{ [key: string]: never }>;
 
+export type GetSeoQuery = {
+  __typename?: 'Query';
+  company?: {
+    __typename?: 'Info';
+    ceo?: string | null;
+    cto?: string | null;
+    coo?: string | null;
+  } | null;
+};
 
-export type GetCompanyInfoWithFragmentQuery = { __typename?: 'Query', company?: { __typename?: 'Info', ceo?: string | null, coo?: string | null, cto?: string | null, headquarters?: { __typename?: 'Address', address?: string | null, city?: string | null, state?: string | null } | null } | null };
+export type CompanyLeadersFragment = {
+  __typename?: 'Info';
+  ceo?: string | null;
+  coo?: string | null;
+  cto?: string | null;
+};
 
-export type CompanyInfoQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetCompanyInfoWithFragmentQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
+export type GetCompanyInfoWithFragmentQuery = {
+  __typename?: 'Query';
+  company?: {
+    __typename?: 'Info';
+    ceo?: string | null;
+    coo?: string | null;
+    cto?: string | null;
+    headquarters?: {
+      __typename?: 'Address';
+      address?: string | null;
+      city?: string | null;
+      state?: string | null;
+    } | null;
+  } | null;
+};
 
-export type CompanyInfoQueryQuery = { __typename?: 'Query', company?: { __typename?: 'Info', ceo?: string | null, coo?: string | null, cto?: string | null, headquarters?: { __typename?: 'Address', address?: string | null, city?: string | null, state?: string | null } | null } | null };
+export type CompanyInfoQueryQueryVariables = Exact<{ [key: string]: never }>;
+
+export type CompanyInfoQueryQuery = {
+  __typename?: 'Query';
+  company?: {
+    __typename?: 'Info';
+    ceo?: string | null;
+    coo?: string | null;
+    cto?: string | null;
+    headquarters?: {
+      __typename?: 'Address';
+      address?: string | null;
+      city?: string | null;
+      state?: string | null;
+    } | null;
+  } | null;
+};
 
 export const CompanyLeadersFragmentDoc = gql`
-    fragment companyLeaders on Info {
-  ceo
-  coo
-  cto
-}
-    `;
-export const GetSeoDocument = gql`
-    query GetSeo {
-  company {
+  fragment companyLeaders on Info {
     ceo
+    coo
+    cto
   }
+`;
+export const GetCompanyLeadersDocument = gql`
+  query GetCompanyLeaders {
+    company {
+      ceo
+      cto
+      coo
+    }
+  }
+`;
+
+/**
+ * __useGetCompanyLeadersQuery__
+ *
+ * To run a query within a React component, call `useGetCompanyLeadersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCompanyLeadersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCompanyLeadersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetCompanyLeadersQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetCompanyLeadersQuery,
+    GetCompanyLeadersQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetCompanyLeadersQuery,
+    GetCompanyLeadersQueryVariables
+  >(GetCompanyLeadersDocument, options);
 }
-    `;
+export function useGetCompanyLeadersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetCompanyLeadersQuery,
+    GetCompanyLeadersQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetCompanyLeadersQuery,
+    GetCompanyLeadersQueryVariables
+  >(GetCompanyLeadersDocument, options);
+}
+export type GetCompanyLeadersQueryHookResult = ReturnType<
+  typeof useGetCompanyLeadersQuery
+>;
+export type GetCompanyLeadersLazyQueryHookResult = ReturnType<
+  typeof useGetCompanyLeadersLazyQuery
+>;
+export type GetCompanyLeadersQueryResult = Apollo.QueryResult<
+  GetCompanyLeadersQuery,
+  GetCompanyLeadersQueryVariables
+>;
+export const GetSpaceXSeoDocument = gql`
+  query GetSpaceXSeo {
+    company {
+      ceo
+    }
+  }
+`;
+
+/**
+ * __useGetSpaceXSeoQuery__
+ *
+ * To run a query within a React component, call `useGetSpaceXSeoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSpaceXSeoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSpaceXSeoQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSpaceXSeoQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetSpaceXSeoQuery,
+    GetSpaceXSeoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetSpaceXSeoQuery, GetSpaceXSeoQueryVariables>(
+    GetSpaceXSeoDocument,
+    options
+  );
+}
+export function useGetSpaceXSeoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetSpaceXSeoQuery,
+    GetSpaceXSeoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetSpaceXSeoQuery, GetSpaceXSeoQueryVariables>(
+    GetSpaceXSeoDocument,
+    options
+  );
+}
+export type GetSpaceXSeoQueryHookResult = ReturnType<
+  typeof useGetSpaceXSeoQuery
+>;
+export type GetSpaceXSeoLazyQueryHookResult = ReturnType<
+  typeof useGetSpaceXSeoLazyQuery
+>;
+export type GetSpaceXSeoQueryResult = Apollo.QueryResult<
+  GetSpaceXSeoQuery,
+  GetSpaceXSeoQueryVariables
+>;
+export const GetSeoDocument = gql`
+  query GetSeo {
+    company {
+      ceo
+      cto
+      coo
+    }
+  }
+`;
 
 /**
  * __useGetSeoQuery__
@@ -1369,29 +1514,43 @@ export const GetSeoDocument = gql`
  *   },
  * });
  */
-export function useGetSeoQuery(baseOptions?: Apollo.QueryHookOptions<GetSeoQuery, GetSeoQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetSeoQuery, GetSeoQueryVariables>(GetSeoDocument, options);
-      }
-export function useGetSeoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSeoQuery, GetSeoQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetSeoQuery, GetSeoQueryVariables>(GetSeoDocument, options);
-        }
+export function useGetSeoQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetSeoQuery, GetSeoQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetSeoQuery, GetSeoQueryVariables>(
+    GetSeoDocument,
+    options
+  );
+}
+export function useGetSeoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetSeoQuery, GetSeoQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetSeoQuery, GetSeoQueryVariables>(
+    GetSeoDocument,
+    options
+  );
+}
 export type GetSeoQueryHookResult = ReturnType<typeof useGetSeoQuery>;
 export type GetSeoLazyQueryHookResult = ReturnType<typeof useGetSeoLazyQuery>;
-export type GetSeoQueryResult = Apollo.QueryResult<GetSeoQuery, GetSeoQueryVariables>;
+export type GetSeoQueryResult = Apollo.QueryResult<
+  GetSeoQuery,
+  GetSeoQueryVariables
+>;
 export const GetCompanyInfoWithFragmentDocument = gql`
-    query GetCompanyInfoWithFragment {
-  company {
-    ...companyLeaders
-    headquarters {
-      address
-      city
-      state
+  query GetCompanyInfoWithFragment {
+    company {
+      ...companyLeaders
+      headquarters {
+        address
+        city
+        state
+      }
     }
   }
-}
-    ${CompanyLeadersFragmentDoc}`;
+  ${CompanyLeadersFragmentDoc}
+`;
 
 /**
  * __useGetCompanyInfoWithFragmentQuery__
@@ -1408,31 +1567,54 @@ export const GetCompanyInfoWithFragmentDocument = gql`
  *   },
  * });
  */
-export function useGetCompanyInfoWithFragmentQuery(baseOptions?: Apollo.QueryHookOptions<GetCompanyInfoWithFragmentQuery, GetCompanyInfoWithFragmentQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetCompanyInfoWithFragmentQuery, GetCompanyInfoWithFragmentQueryVariables>(GetCompanyInfoWithFragmentDocument, options);
-      }
-export function useGetCompanyInfoWithFragmentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCompanyInfoWithFragmentQuery, GetCompanyInfoWithFragmentQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetCompanyInfoWithFragmentQuery, GetCompanyInfoWithFragmentQueryVariables>(GetCompanyInfoWithFragmentDocument, options);
-        }
-export type GetCompanyInfoWithFragmentQueryHookResult = ReturnType<typeof useGetCompanyInfoWithFragmentQuery>;
-export type GetCompanyInfoWithFragmentLazyQueryHookResult = ReturnType<typeof useGetCompanyInfoWithFragmentLazyQuery>;
-export type GetCompanyInfoWithFragmentQueryResult = Apollo.QueryResult<GetCompanyInfoWithFragmentQuery, GetCompanyInfoWithFragmentQueryVariables>;
+export function useGetCompanyInfoWithFragmentQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetCompanyInfoWithFragmentQuery,
+    GetCompanyInfoWithFragmentQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetCompanyInfoWithFragmentQuery,
+    GetCompanyInfoWithFragmentQueryVariables
+  >(GetCompanyInfoWithFragmentDocument, options);
+}
+export function useGetCompanyInfoWithFragmentLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetCompanyInfoWithFragmentQuery,
+    GetCompanyInfoWithFragmentQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetCompanyInfoWithFragmentQuery,
+    GetCompanyInfoWithFragmentQueryVariables
+  >(GetCompanyInfoWithFragmentDocument, options);
+}
+export type GetCompanyInfoWithFragmentQueryHookResult = ReturnType<
+  typeof useGetCompanyInfoWithFragmentQuery
+>;
+export type GetCompanyInfoWithFragmentLazyQueryHookResult = ReturnType<
+  typeof useGetCompanyInfoWithFragmentLazyQuery
+>;
+export type GetCompanyInfoWithFragmentQueryResult = Apollo.QueryResult<
+  GetCompanyInfoWithFragmentQuery,
+  GetCompanyInfoWithFragmentQueryVariables
+>;
 export const CompanyInfoQueryDocument = gql`
-    query CompanyInfoQuery {
-  company {
-    ceo
-    coo
-    cto
-    headquarters {
-      address
-      city
-      state
+  query CompanyInfoQuery {
+    company {
+      ceo
+      coo
+      cto
+      headquarters {
+        address
+        city
+        state
+      }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useCompanyInfoQueryQuery__
@@ -1449,14 +1631,37 @@ export const CompanyInfoQueryDocument = gql`
  *   },
  * });
  */
-export function useCompanyInfoQueryQuery(baseOptions?: Apollo.QueryHookOptions<CompanyInfoQueryQuery, CompanyInfoQueryQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CompanyInfoQueryQuery, CompanyInfoQueryQueryVariables>(CompanyInfoQueryDocument, options);
-      }
-export function useCompanyInfoQueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CompanyInfoQueryQuery, CompanyInfoQueryQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CompanyInfoQueryQuery, CompanyInfoQueryQueryVariables>(CompanyInfoQueryDocument, options);
-        }
-export type CompanyInfoQueryQueryHookResult = ReturnType<typeof useCompanyInfoQueryQuery>;
-export type CompanyInfoQueryLazyQueryHookResult = ReturnType<typeof useCompanyInfoQueryLazyQuery>;
-export type CompanyInfoQueryQueryResult = Apollo.QueryResult<CompanyInfoQueryQuery, CompanyInfoQueryQueryVariables>;
+export function useCompanyInfoQueryQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    CompanyInfoQueryQuery,
+    CompanyInfoQueryQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CompanyInfoQueryQuery, CompanyInfoQueryQueryVariables>(
+    CompanyInfoQueryDocument,
+    options
+  );
+}
+export function useCompanyInfoQueryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CompanyInfoQueryQuery,
+    CompanyInfoQueryQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    CompanyInfoQueryQuery,
+    CompanyInfoQueryQueryVariables
+  >(CompanyInfoQueryDocument, options);
+}
+export type CompanyInfoQueryQueryHookResult = ReturnType<
+  typeof useCompanyInfoQueryQuery
+>;
+export type CompanyInfoQueryLazyQueryHookResult = ReturnType<
+  typeof useCompanyInfoQueryLazyQuery
+>;
+export type CompanyInfoQueryQueryResult = Apollo.QueryResult<
+  CompanyInfoQueryQuery,
+  CompanyInfoQueryQueryVariables
+>;

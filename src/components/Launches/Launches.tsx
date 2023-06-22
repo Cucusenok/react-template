@@ -1,7 +1,7 @@
-import React from "react";
-import {useGetSeoQuery} from "@gql/graphql";
+import { useGetSeoQuery } from '@gql/graphql';
+import React from 'react';
 
 export const Launches = () => {
-    const {} = useGetSeoQuery();
-    return <div>test</div>
-}
+  const { data } = useGetSeoQuery();
+  return <div>{JSON.stringify(data)}</div>;
+};

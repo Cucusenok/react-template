@@ -1,11 +1,17 @@
 directive @contact(
-  """Other relevant notes can be included here; supports markdown links"""
+  """
+  Other relevant notes can be included here; supports markdown links
+  """
   description: String
 
-  """Contact title of the subgraph owner"""
+  """
+  Contact title of the subgraph owner
+  """
   name: String!
 
-  """URL where the subgraph's owner can be reached"""
+  """
+  URL where the subgraph's owner can be reached
+  """
   url: String
 ) on SCHEMA
 
@@ -16,7 +22,10 @@ type Address {
 }
 
 type Capsule {
-  dragon: Dragon @deprecated(reason: "This is not available in the REST API after MongoDB has been deprecated")
+  dragon: Dragon
+    @deprecated(
+      reason: "This is not available in the REST API after MongoDB has been deprecated"
+    )
   id: ID
   landings: Int
   missions: [CapsuleMission]
@@ -410,7 +419,9 @@ type Mutation {
   delete data from the table: "users"
   """
   delete_users(
-    """filter the rows which have to be deleted"""
+    """
+    filter the rows which have to be deleted
+    """
     where: users_bool_exp!
   ): users_mutation_response
 
@@ -418,10 +429,14 @@ type Mutation {
   insert data into the table: "users"
   """
   insert_users(
-    """the rows to be inserted"""
+    """
+    the rows to be inserted
+    """
     objects: [users_insert_input!]!
 
-    """on conflict condition"""
+    """
+    on conflict condition
+    """
     on_conflict: users_on_conflict
   ): users_mutation_response
 
@@ -429,10 +444,14 @@ type Mutation {
   update data of the table: "users"
   """
   update_users(
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: users_set_input
 
-    """filter the rows which have to be updated"""
+    """
+    filter the rows which have to be updated
+    """
     where: users_bool_exp!
   ): users_mutation_response
 }
@@ -497,60 +516,169 @@ input PayloadsFind {
 
 type Query {
   capsule(id: ID!): Capsule
-  capsules(find: CapsulesFind, limit: Int, offset: Int, order: String, sort: String): [Capsule]
-  capsulesPast(find: CapsulesFind, limit: Int, offset: Int, order: String, sort: String): [Capsule]
-  capsulesUpcoming(find: CapsulesFind, limit: Int, offset: Int, order: String, sort: String): [Capsule]
+  capsules(
+    find: CapsulesFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Capsule]
+  capsulesPast(
+    find: CapsulesFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Capsule]
+  capsulesUpcoming(
+    find: CapsulesFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Capsule]
   company: Info
   core(id: ID!): Core
-  cores(find: CoresFind, limit: Int, offset: Int, order: String, sort: String): [Core]
-  coresPast(find: CoresFind, limit: Int, offset: Int, order: String, sort: String): [Core]
-  coresUpcoming(find: CoresFind, limit: Int, offset: Int, order: String, sort: String): [Core]
+  cores(
+    find: CoresFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Core]
+  coresPast(
+    find: CoresFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Core]
+  coresUpcoming(
+    find: CoresFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Core]
   dragon(id: ID!): Dragon
   dragons(limit: Int, offset: Int): [Dragon]
-  histories(find: HistoryFind, limit: Int, offset: Int, order: String, sort: String): [History]
-  historiesResult(find: HistoryFind, limit: Int, offset: Int, order: String, sort: String): HistoriesResult
+  histories(
+    find: HistoryFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [History]
+  historiesResult(
+    find: HistoryFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): HistoriesResult
   history(id: ID!): History
   landpad(id: ID!): Landpad
   landpads(limit: Int, offset: Int): [Landpad]
   launch(id: ID!): Launch
   launchLatest(offset: Int): Launch
   launchNext(offset: Int): Launch
-  launches(find: LaunchFind, limit: Int, offset: Int, order: String, sort: String): [Launch]
-  launchesPast(find: LaunchFind, limit: Int, offset: Int, order: String, sort: String): [Launch]
-  launchesPastResult(find: LaunchFind, limit: Int, offset: Int, order: String, sort: String): LaunchesPastResult
-  launchesUpcoming(find: LaunchFind, limit: Int, offset: Int, order: String, sort: String): [Launch]
+  launches(
+    find: LaunchFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Launch]
+  launchesPast(
+    find: LaunchFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Launch]
+  launchesPastResult(
+    find: LaunchFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): LaunchesPastResult
+  launchesUpcoming(
+    find: LaunchFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Launch]
   launchpad(id: ID!): Launchpad
   launchpads(limit: Int, offset: Int): [Launchpad]
-  mission(id: ID!): Mission @deprecated(reason: "Mission is not available on REST API after MongoDB deprecation")
-  missions(find: MissionsFind, limit: Int, offset: Int): [Mission] @deprecated(reason: "Mission is not available on REST API after MongoDB deprecation")
-  missionsResult(find: MissionsFind, limit: Int, offset: Int): MissionResult @deprecated(reason: "Mission is not available on REST API after MongoDB deprecation")
+  mission(id: ID!): Mission
+    @deprecated(
+      reason: "Mission is not available on REST API after MongoDB deprecation"
+    )
+  missions(find: MissionsFind, limit: Int, offset: Int): [Mission]
+    @deprecated(
+      reason: "Mission is not available on REST API after MongoDB deprecation"
+    )
+  missionsResult(find: MissionsFind, limit: Int, offset: Int): MissionResult
+    @deprecated(
+      reason: "Mission is not available on REST API after MongoDB deprecation"
+    )
   payload(id: ID!): Payload
-  payloads(find: PayloadsFind, limit: Int, offset: Int, order: String, sort: String): [Payload]
+  payloads(
+    find: PayloadsFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Payload]
   roadster: Roadster
   rocket(id: ID!): Rocket
   rockets(limit: Int, offset: Int): [Rocket]
   rocketsResult(limit: Int, offset: Int): RocketsResult
   ship(id: ID!): Ship
-  ships(find: ShipsFind, limit: Int, offset: Int, order: String, sort: String): [Ship]
-  shipsResult(find: ShipsFind, limit: Int, offset: Int, order: String, sort: String): ShipsResult
+  ships(
+    find: ShipsFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [Ship]
+  shipsResult(
+    find: ShipsFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): ShipsResult
 
   """
   fetch data from the table: "users"
   """
   users(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [users_select_column!]
 
-    """limit the nuber of rows returned"""
+    """
+    limit the nuber of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [users_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: users_bool_exp
   ): [users!]!
 
@@ -558,23 +686,35 @@ type Query {
   fetch aggregated fields from the table: "users"
   """
   users_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [users_select_column!]
 
-    """limit the nuber of rows returned"""
+    """
+    limit the nuber of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [users_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: users_bool_exp
   ): users_aggregate!
 
-  """fetch data from the table: "users" using primary key columns"""
+  """
+  fetch data from the table: "users" using primary key columns
+  """
   users_by_pk(id: uuid!): users
 }
 
@@ -782,19 +922,29 @@ type Subscription {
   fetch data from the table: "users"
   """
   users(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [users_select_column!]
 
-    """limit the nuber of rows returned"""
+    """
+    limit the nuber of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [users_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: users_bool_exp
   ): [users!]!
 
@@ -802,23 +952,35 @@ type Subscription {
   fetch aggregated fields from the table: "users"
   """
   users_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [users_select_column!]
 
-    """limit the nuber of rows returned"""
+    """
+    limit the nuber of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [users_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: users_bool_exp
   ): users_aggregate!
 
-  """fetch data from the table: "users" using primary key columns"""
+  """
+  fetch data from the table: "users" using primary key columns
+  """
   users_by_pk(id: uuid!): users
 }
 
@@ -827,33 +989,53 @@ type Volume {
   cubic_meters: Int
 }
 
-"""conflict action"""
+"""
+conflict action
+"""
 enum conflict_action {
-  """ignore the insert on this row"""
+  """
+  ignore the insert on this row
+  """
   ignore
 
-  """update the row with the given values"""
+  """
+  update the row with the given values
+  """
   update
 }
 
-"""column ordering options"""
+"""
+column ordering options
+"""
 enum order_by {
-  """in the ascending order, nulls last"""
+  """
+  in the ascending order, nulls last
+  """
   asc
 
-  """in the ascending order, nulls first"""
+  """
+  in the ascending order, nulls first
+  """
   asc_nulls_first
 
-  """in the ascending order, nulls last"""
+  """
+  in the ascending order, nulls last
+  """
   asc_nulls_last
 
-  """in the descending order, nulls first"""
+  """
+  in the descending order, nulls first
+  """
   desc
 
-  """in the descending order, nulls first"""
+  """
+  in the descending order, nulls first
+  """
   desc_nulls_first
 
-  """in the descending order, nulls last"""
+  """
+  in the descending order, nulls last
+  """
   desc_nulls_last
 }
 
@@ -956,7 +1138,9 @@ input users_insert_input {
   twitter: String
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type users_max_fields {
   name: String
   rocket: String
@@ -974,7 +1158,9 @@ input users_max_order_by {
   twitter: order_by
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type users_min_fields {
   name: String
   rocket: String
@@ -996,10 +1182,14 @@ input users_min_order_by {
 response of any mutation on the table "users"
 """
 type users_mutation_response {
-  """number of affected rows by the mutation"""
+  """
+  number of affected rows by the mutation
+  """
   affected_rows: Int!
 
-  """data of the affected rows by the mutation"""
+  """
+  data of the affected rows by the mutation
+  """
   returning: [users!]!
 }
 

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-// import { GraphQLExample } from "@components/GraphQLExample/GraphQLExample";
-// import { FragmentQueryExample } from "@components/FragmentQueryExample/FragmentQueryExample";
-// import { GraphQLNewComponent } from '@components/GraphQLNewComponent/GraphQLNewComponent';
-import { SignIn } from "./SignIn";
-import { Register } from "./Register";
-import "./App.css";
+import { FragmentQueryExample } from '@components/FragmentQueryExample/FragmentQueryExample';
+import { ComponentWithQuery } from '@components/ComponentWithQuery/ComponentWithQuery';
+import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
+import { GraphQLExample } from '@components/GraphQLExample/GraphQLExample';
+import React from 'react';
+
+import logo from './logo.svg';
+import './App.css';
 
 const client = new ApolloClient({
-  uri: "https://spacex-production.up.railway.app",
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  uri: 'https://spacex-production.up.railway.app',
 });
 
 function App() {
@@ -19,16 +19,27 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
-          {/* <FragmentQueryExample /> */}
-          {/* <GraphQLExample /> */}
-          {isAuth ? (
-            <SignIn setIsAuth={setIsAuth} />
-          ) : (
-            <Register setIsAuth={setIsAuth} />
-          )}
-
-          {/* <GraphQLNewComponent /> */}
+          <FragmentQueryExample />
+          <GraphQLExample />
+          <ComponentWithQuery />
+          <img className="App-logo" alt="logo" src={logo} />
+          <p>
+            Edit
+            <code>src/App.tsx</code>
+            and save to reload.
+          </p>
+          <a
+            href="https://reactjs.org"
+            rel="noopener noreferrer"
+            className="App-link"
+            target="_blank"
+          >
+            Learn React
+          </a>
         </header>
+        <div>
+          <a href="https://google.com">Какая-то ссылк</a>
+        </div>
       </div>
     </ApolloProvider>
   );
