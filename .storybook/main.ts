@@ -19,10 +19,11 @@ const config: StorybookConfig = {
   staticDirs: ['../public'],
 
   webpackFinal: async (config) => {
-    config.resolve.plugins = [
-      ...(config.resolve.plugins || []),
+    let configResolvePlugin = config?.resolve?.plugins;
+    configResolvePlugin = [
+      ...(config?.resolve?.plugins || []),
       new TsconfigPathsPlugin({
-        extensions: config.resolve.extensions,
+        extensions: config?.resolve?.extensions,
       }),
     ];
     return config;

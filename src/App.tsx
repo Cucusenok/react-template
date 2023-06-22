@@ -2,9 +2,8 @@ import { FragmentQueryExample } from '@components/FragmentQueryExample/FragmentQ
 import { ComponentWithQuery } from '@components/ComponentWithQuery/ComponentWithQuery';
 import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
 import { GraphQLExample } from '@components/GraphQLExample/GraphQLExample';
-import React from 'react';
+import { Authentication } from '@components/Authentication';
 
-import logo from './logo.svg';
 import './App.css';
 
 const client = new ApolloClient({
@@ -13,8 +12,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [isAuth, setIsAuth] = useState(true)
-
   return (
     <ApolloProvider client={client}>
       <div className="App">
@@ -22,20 +19,7 @@ function App() {
           <FragmentQueryExample />
           <GraphQLExample />
           <ComponentWithQuery />
-          <img className="App-logo" alt="logo" src={logo} />
-          <p>
-            Edit
-            <code>src/App.tsx</code>
-            and save to reload.
-          </p>
-          <a
-            href="https://reactjs.org"
-            rel="noopener noreferrer"
-            className="App-link"
-            target="_blank"
-          >
-            Learn React
-          </a>
+          <Authentication />
         </header>
         <div>
           <a href="https://google.com">Какая-то ссылк</a>

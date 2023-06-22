@@ -8,18 +8,20 @@ export const ComponentWithQuery = () => {
   return (
     <RequestLoader loading={loading} error={error}>
       <table>
-        <tr>
-          <th>CEO</th>
-          <th>{data?.company?.ceo}</th>
-        </tr>
-        <tr>
-          <td>COO</td>
-          <td>{data?.company?.coo}</td>
-        </tr>
-        <tr>
-          <td>CTO</td>
-          <td>{data?.company?.cto}</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>CEO</th>
+            <th>{data?.company?.ceo}</th>
+          </tr>
+          <tr>
+            <td>COO</td>
+            <td>{data?.company?.coo}</td>
+          </tr>
+          <tr>
+            <td>CTO</td>
+            <td>{data?.company?.cto}</td>
+          </tr>
+        </tbody>
       </table>
     </RequestLoader>
   );

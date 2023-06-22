@@ -5,7 +5,7 @@
         "jest": true
     },
     "ignorePatterns": [
-        "README.MD","graphql.tsx", "BadCode.tsx", "fragment-masking.ts", "*.stories.ts", "setupTests.ts", "index.tsx", "*.json"
+        "README.MD","graphql.tsx", "BadCode.tsx", "fragment-masking.ts", "*.stories.ts", "setupTests.ts", "index.tsx", "*.json", "App.css"
     ],
     "extends": [
         // "standard-with-typescript",
