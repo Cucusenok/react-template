@@ -1,5 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable */
 const CracoAlias = require('craco-alias');
 
 module.exports = {

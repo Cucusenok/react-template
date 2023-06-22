@@ -20,6 +20,9 @@ module.exports = {
     '*.json',
     'build/*',
     '*.gql',
+    '*.css',
+    '*.mdx',
+    '*.stories.ts',
   ],
   settings: {
     node: {

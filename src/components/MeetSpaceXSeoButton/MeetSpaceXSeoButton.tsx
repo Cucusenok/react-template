@@ -1,7 +1,6 @@
 import { RequestLoader } from '@components/Loader/RequestLoader';
 import { useGetSpaceXSeoQuery } from '@gql/graphql';
 import React from 'react';
-
 import { MeetSpaceXSeoButtonProps } from './MeetSpaceXSeoButton.types';
 import { Button, CEOName } from './MeetSpaceXSeoButton.styles';
 

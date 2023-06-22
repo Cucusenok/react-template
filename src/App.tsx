@@ -3,10 +3,13 @@ import { ApolloProvider } from '@apollo/client';
 import React from 'react';
 import { ApolloClientConfig } from './Apollo/client';
 
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
 
 function App() {
+  // For test no-console
+  // const consoleLogChecking = 'some string'
+  // console.log(consoleLogChecking)
   return (
     <ApolloProvider client={ApolloClientConfig}>
       <div className="App">
