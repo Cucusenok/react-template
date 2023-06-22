@@ -1,25 +1,17 @@
-import { FragmentQueryExample } from '@components/FragmentQueryExample/FragmentQueryExample';
-import { ComponentWithQuery } from '@components/ComponentWithQuery/ComponentWithQuery';
-import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
-import { GraphQLExample } from '@components/GraphQLExample/GraphQLExample';
+import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton/MeetSpaceXSeoButton';
+import { ApolloProvider } from '@apollo/client';
 import React from 'react';
+import { ApolloClientConfig } from './Apollo/client';
 
 import logo from './logo.svg';
 import './App.css';
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  uri: 'https://spacex-production.up.railway.app',
-});
-
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={ApolloClientConfig}>
       <div className="App">
         <header className="App-header">
-          <FragmentQueryExample />
-          <GraphQLExample />
-          <ComponentWithQuery />
+          <MeetSpaceXSeoButton />
           <img className="App-logo" alt="logo" src={logo} />
           <p>
             Edit

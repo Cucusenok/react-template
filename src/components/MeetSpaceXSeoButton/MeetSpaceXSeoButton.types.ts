@@ -1,5 +1,3 @@
-import { MouseEventHandler } from 'react';
-
 export interface MeetSpaceXSeoButtonProps {
-  onClick?: MouseEventHandler<Element> | undefined;
+  onClick?: (ceo: string) => void | undefined;
 }
