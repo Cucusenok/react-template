@@ -62,3 +62,8 @@ Fix all auto fixable problems:
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+The '.husky/pre-commit' hook was ignored because it's not set as executable.
+
+`hmod ug+x .husky/*
+chmod ug+x .git/hooks/*`

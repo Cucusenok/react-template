@@ -13,5 +13,5 @@ export type RequestLoaderProps = React.PropsWithChildren & {
 export const RequestLoader = (props: RequestLoaderProps) => {
   if (props.loading) return <CircularProgress />;
   if (props.error) return <div>Loading error</div>;
-  return props.children;
+  return <>{props.children}</>;
 };
