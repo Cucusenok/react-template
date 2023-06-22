@@ -13,6 +13,9 @@ const client = new ApolloClient({
 });
 
 function App() {
+  // For test no-console
+  // const consoleLogChecking = 'some string'
+  // console.log(consoleLogChecking)
   return (
     <ApolloProvider client={client}>
       <div className="App">
