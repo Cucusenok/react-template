@@ -53,9 +53,9 @@ Format all files with Prettier:
 
 # Eslint
 
-Fix all auto fixable problems:
+Check if there are problems:
 
-### `npx prettier --write .`
+### `eslint --quiet --ext .ts,.jsx,.tsx  .`
 
 ## Learn More
 

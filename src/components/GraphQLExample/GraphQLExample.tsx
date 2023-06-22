@@ -1,5 +1,5 @@
-import { CircularProgress } from '@mui/material';
 import { useGetSeoQuery } from '@gql/graphql';
+import { CircularProgress } from '@mui/material';
 import React from 'react';
 
 export const GraphQLExample = () => {
