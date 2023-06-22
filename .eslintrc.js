@@ -1,4 +1,3 @@
-console.log('=====================', process.env.NODE_ENV);
 module.exports = {
   env: {
     jest: true,
@@ -19,6 +18,10 @@ module.exports = {
     'setupTests.ts',
     'index.tsx',
     '*.json',
+    'build/*',
+    '*.css',
+    '*.mdx',
+    '*.stories.ts',
   ],
   settings: {
     node: {
@@ -52,7 +55,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'react/destructuring-assignment': 'off',
     'react/function-component-definition': 'off',
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    'no-console': process.env.NODE_ENV === 'development' ? 'warn' : 'error',
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },

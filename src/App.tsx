@@ -1,11 +1,11 @@
-import { FragmentQueryExample } from '@components/FragmentQueryExample/FragmentQueryExample';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { ComponentWithQuery } from '@components/ComponentWithQuery/ComponentWithQuery';
-import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
+import { FragmentQueryExample } from '@components/FragmentQueryExample/FragmentQueryExample';
 import { GraphQLExample } from '@components/GraphQLExample/GraphQLExample';
 import React from 'react';
 
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
