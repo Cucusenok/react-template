@@ -4,6 +4,7 @@ export const Card = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
+  justifyContent: 'space-between',
   padding: '20px',
   border: '2px solid #EAEAEA',
   borderRadius: '12px',
@@ -25,7 +26,7 @@ export const RowWithSmallSpacing = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {},
 }));
 
-export const RowWithMediumSpacing = styled('div')(({ theme }) => ({
+export const BottomRow = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: '24px',

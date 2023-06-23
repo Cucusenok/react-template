@@ -10,7 +10,6 @@ export const theme = createTheme({
     h3: {
       color: '#4D4D4D',
       fontSize: '18px',
-      fontWeight: 'bold',
     },
   },
 });

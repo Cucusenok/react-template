@@ -1,32 +1,39 @@
+import { RequestLoader } from '@components/Loader/RequestLoader';
 import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton';
 import { SpaceXLaunchCard } from '@components/SpaceXLaunchCard/SpaceXLaunchCard';
+import { useGetSpaceXLaunchesQuery } from '@gql/graphql';
 import React from 'react';
 
 import './App.css';
-import logo from './logo.svg';
 
 function App() {
+  const { data, error, loading } = useGetSpaceXLaunchesQuery();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <MeetSpaceXSeoButton />
-        <img className="App-logo" alt="logo" src={logo} />
-        <p>
-          Edit
-          <code>src/App.tsx</code>
-          and save to reload.
-        </p>
-        <a
-          href="https://reactjs.org"
-          rel="noopener noreferrer"
-          className="App-link"
-          target="_blank"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Иллюстрация работы компонента MeetSpaceXSeoButton:</p>
+      <MeetSpaceXSeoButton />
 
-      <SpaceXLaunchCard />
+      <p>Иллюстрация работы компонента SpaceXLaunchCard:</p>
+
+      <RequestLoader loading={loading} error={error}>
+        {!error ? (
+          <div className="App-grid">
+            {data?.launches?.map((item) => (
+              <SpaceXLaunchCard
+                id={item?.id}
+                name={item?.mission_name}
+                date={item?.launch_date_local}
+                details={item?.details}
+                tag={item?.rocket?.rocket_name}
+                price={24000}
+              />
+            ))}
+          </div>
+        ) : (
+          <p>{JSON.stringify(error)}</p>
+        )}
+      </RequestLoader>
     </div>
   );
 }
