@@ -1,8 +1,9 @@
-import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton/MeetSpaceXSeoButton';
 import { ApolloProvider } from '@apollo/client';
+import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton/MeetSpaceXSeoButton';
+import { SpaceXLaunchCard } from '@components/SpaceXLaunchCard/SpaceXLaunchCard';
 import React from 'react';
-import { ApolloClientConfig } from './Apollo/client';
 
+import { ApolloClientConfig } from './Apollo/client';
 import './App.css';
 import logo from './logo.svg';
 
@@ -33,6 +34,7 @@ function App() {
         <div>
           <a href="https://google.com">Какая-то ссылк</a>
         </div>
+        <SpaceXLaunchCard />
       </div>
     </ApolloProvider>
   );
