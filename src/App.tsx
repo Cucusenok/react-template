@@ -1,4 +1,4 @@
-import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton/MeetSpaceXSeoButton';
+import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton';
 import { ApolloProvider } from '@apollo/client';
 import React from 'react';
 import { ApolloClientConfig } from './Apollo/client';
