@@ -1,10 +1,10 @@
-import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton';
 import { ApolloProvider } from '@apollo/client';
+import { Authentication } from '@components/Authentication';
+import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton';
 import React from 'react';
-import { ApolloClientConfig } from './Apollo/client';
 
+import { ApolloClientConfig } from './Apollo/client';
 import './App.css';
-import logo from './logo.svg';
 
 function App() {
   // For test no-console
@@ -15,20 +15,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <MeetSpaceXSeoButton />
-          <img className="App-logo" alt="logo" src={logo} />
-          <p>
-            Edit
-            <code>src/App.tsx</code>
-            and save to reload.
-          </p>
-          <a
-            href="https://reactjs.org"
-            rel="noopener noreferrer"
-            className="App-link"
-            target="_blank"
-          >
-            Learn React
-          </a>
+          <Authentication />
         </header>
         <div>
           <a href="https://google.com">Какая-то ссылк</a>

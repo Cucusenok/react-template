@@ -1,6 +1,8 @@
-import type { Preview } from '@storybook/react';
-import { MockedProvider } from '@apollo/client/testing'; // Use for Apollo Version 3+
+// Use for Apollo Version 3+
 import { ApolloProvider } from '@apollo/client';
+import { MockedProvider } from '@apollo/client/testing';
+import type { Preview } from '@storybook/react';
+
 import { ApolloClientConfig } from '../src/Apollo/client';
 
 const preview: Preview = {
