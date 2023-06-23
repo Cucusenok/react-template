@@ -23,6 +23,7 @@ module.exports = {
     '*.css',
     '*.mdx',
     '*.stories.ts',
+    '*.html',
   ],
   settings: {
     node: {
