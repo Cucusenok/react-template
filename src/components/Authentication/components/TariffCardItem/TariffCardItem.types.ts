@@ -3,6 +3,6 @@ import { Dispatch, SetStateAction } from 'react';
 
 export interface TariffCardProps {
   variant: 'text' | 'outlined' | 'contained';
-  setSelectedTariff: Dispatch<SetStateAction<undefined | number>>;
+  setSelectedTariff: Dispatch<SetStateAction<null | number>>;
   tariff: TariffType;
 }

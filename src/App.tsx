@@ -1,26 +1,15 @@
 import { ApolloProvider } from '@apollo/client';
-import { Authentication } from '@components/Authentication';
-import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton';
+import { ROUTES } from '@common/router';
 import React from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ApolloClientConfig } from './Apollo/client';
-import './App.css';
 
 function App() {
-  // For test no-console
-  // const consoleLogChecking = 'some string'
-  // console.log(consoleLogChecking)
+  const router = createBrowserRouter(ROUTES);
   return (
     <ApolloProvider client={ApolloClientConfig}>
-      <div className="App">
-        <header className="App-header">
-          <MeetSpaceXSeoButton />
-          <Authentication />
-        </header>
-        <div>
-          <a href="https://google.com">Какая-то ссылк</a>
-        </div>
-      </div>
+      <RouterProvider router={router} />
     </ApolloProvider>
   );
 }

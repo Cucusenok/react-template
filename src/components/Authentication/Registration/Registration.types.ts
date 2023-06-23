@@ -1,9 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-
-export type RegisterProps = {
-  setIsAuth: Dispatch<SetStateAction<string>>;
-};
-
 export type FormValues = {
   confirmPassword: string;
   accountType: string;

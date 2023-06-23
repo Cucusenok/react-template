@@ -1,21 +1,21 @@
-import { Container, Grid } from '@mui/material';
+import { AuthCard } from '@components/Authentication/AuthCard/AuthCard';
+import { Grid } from '@mui/material';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FieldErrors } from 'react-hook-form/dist/types/errors';
+import { Control } from 'react-hook-form/dist/types/form';
+import { useNavigate } from 'react-router-dom';
 
-import { FormValues, RegisterProps, TariffType } from '.';
+import { FormValues, TariffType } from '.';
 import {
   Button,
-  Card,
-  CardContainer,
   Divider,
   Input,
   Links,
-  Logo,
   SelectInput,
   SocialsBox,
   TariffCardItem,
   TextLink,
-  TitleTypography,
 } from '../components';
 import {
   confirmPasswordRules,
@@ -39,11 +39,122 @@ const selectItems = [
   },
 ];
 
-export function Registration({ setIsAuth }: RegisterProps) {
-  const [step, setStep] = useState<number>(1);
-  const [selectedTariff, setSelectedTariff] = useState<undefined | number>(
-    undefined
+enum STEPS_ENUM {
+  REGISTRATION,
+}
+
+interface SignUpFormProps {
+  errors: FieldErrors<FormValues>;
+  control: Control<FormValues>;
+  password: string;
+  isValid: boolean;
+  onNextClick: () => void;
+}
+const SignUpForm = ({
+  errors,
+  control,
+  password,
+  isValid,
+  onNextClick,
+}: SignUpFormProps) => {
+  return (
+    <>
+      <Input
+        name="email"
+        label="Email address"
+        size="medium"
+        fullWidth
+        errorMessage={errors?.email?.message}
+        rules={emailRules}
+        control={control}
+      />
+      <Input
+        name="password"
+        label="Password"
+        size="medium"
+        margin="normal"
+        type="password"
+        fullWidth
+        errorMessage={errors?.password?.message}
+        rules={passwordRules}
+        control={control}
+      />
+      <Input
+        name="confirmPassword"
+        label="Confirm password"
+        size="medium"
+        margin="normal"
+        type="password"
+        fullWidth
+        errorMessage={errors?.confirmPassword?.message}
+        rules={confirmPasswordRules}
+        control={control}
+        password={password}
+      />
+      <SelectInput
+        name="accountType"
+        label="Account type"
+        required
+        color="primary"
+        size="medium"
+        fullWidth
+        control={control}
+        selectItems={selectItems}
+      />
+      <Button
+        onClick={onNextClick}
+        sx={{ mt: 2, mb: 2 }}
+        variant="contained"
+        disabled={!isValid}
+        fullWidth
+      >
+        NEXT
+      </Button>
+      <Links>
+        <TextLink href="/auth/sign-in">Already have an account?</TextLink>
+      </Links>
+      <Divider text="Or continue with" />
+      <SocialsBox />
+    </>
   );
+};
+
+interface TariffFormProps {
+  onSubmit: (selectedTariff: number) => void;
+}
+
+const TariffForm = ({ onSubmit }: TariffFormProps) => {
+  const [selectedTariff, setSelectedTariff] = useState<null | number>(0);
+
+  return (
+    <>
+      <Grid spacing={2} container>
+        {tariffData.map((tariff: TariffType) => (
+          <Grid key={tariff.id} xs={6} item>
+            <TariffCardItem
+              variant={tariff.id === selectedTariff ? 'contained' : 'outlined'}
+              setSelectedTariff={setSelectedTariff}
+              tariff={tariff}
+            />
+          </Grid>
+        ))}
+      </Grid>
+      <Button
+        disabled={selectedTariff === null}
+        sx={{ mt: 6 }}
+        type="submit"
+        variant="contained"
+        fullWidth
+        onClick={() => selectedTariff && onSubmit(selectedTariff)}
+      >
+        CONFIRM
+      </Button>
+    </>
+  );
+};
+
+export function Registration() {
+  const [step, setStep] = useState<number>(0);
   const {
     watch,
     control,
@@ -60,121 +171,47 @@ export function Registration({ setIsAuth }: RegisterProps) {
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    const dataWithTariff = { ...data, selectedTariff };
-    console.log('formData:', dataWithTariff);
+  const navigate = useNavigate();
+
+  const onSubmit = (data: FormValues & { selectedTariff: number }) => {
+    console.log('formData:', data);
     setTimeout(() => {
-      setIsAuth('SignIn');
+      navigate('/auth/sign-in');
     }, 1000);
   };
 
   const password = watch('password');
 
   return (
-    <Container maxWidth={step === 1 ? 'xs' : 'sm'} component="main">
-      <Card>
-        <CardContainer>
-          {step === 1 && <Logo>Logo</Logo>}
-          <TitleTypography variant="h5">
-            {step === 1 ? 'Registration' : 'Choose a tariff plan'}
-          </TitleTypography>
-          <form
-            onSubmit={handleSubmit((data) => onSubmit(data))}
-            style={{ textAlign: 'left' }}
-          >
-            {step === 1 ? (
-              <>
-                <Input
-                  name="email"
-                  label="Email address"
-                  size="medium"
-                  fullWidth
-                  errorMessage={errors?.email?.message}
-                  rules={emailRules}
-                  control={control}
-                />
-                <Input
-                  name="password"
-                  label="Password"
-                  size="medium"
-                  margin="normal"
-                  type="password"
-                  fullWidth
-                  errorMessage={errors?.password?.message}
-                  rules={passwordRules}
-                  control={control}
-                />
-                <Input
-                  name="confirmPassword"
-                  label="Confirm password"
-                  size="medium"
-                  margin="normal"
-                  type="password"
-                  fullWidth
-                  errorMessage={errors?.confirmPassword?.message}
-                  rules={confirmPasswordRules}
-                  control={control}
-                  password={password}
-                />
-                <SelectInput
-                  name="accountType"
-                  label="Account type"
-                  required
-                  color="primary"
-                  size="medium"
-                  fullWidth
-                  control={control}
-                  selectItems={selectItems}
-                />
-                <Button
-                  onClick={() => setStep(2)}
-                  sx={{ mt: 2, mb: 2 }}
-                  variant="contained"
-                  disabled={!isValid}
-                  fullWidth
-                >
-                  NEXT
-                </Button>
-                <Links>
-                  <TextLink onClick={() => setIsAuth('SignIn')}>
-                    Already have an account?
-                  </TextLink>
-                </Links>
-                <Divider text="Or continue with" />
-                <SocialsBox />
-              </>
-            ) : (
-              <>
-                <Grid spacing={2} container>
-                  {tariffData.map((tariff: TariffType) => (
-                    <Grid key={tariff.id} xs={6} item>
-                      <TariffCardItem
-                        variant={
-                          tariff.id === selectedTariff
-                            ? 'contained'
-                            : 'outlined'
-                        }
-                        setSelectedTariff={setSelectedTariff}
-                        tariff={tariff}
-                      />
-                    </Grid>
-                  ))}
-                </Grid>
-                <Button
-                  disabled={!selectedTariff || !isValid}
-                  sx={{ mt: 6 }}
-                  type="submit"
-                  variant="contained"
-                  fullWidth
-                  onClick={() => onSubmit(getValues())}
-                >
-                  CONFIRM
-                </Button>
-              </>
-            )}
-          </form>
-        </CardContainer>
-      </Card>
-    </Container>
+    <AuthCard
+      title={
+        step === STEPS_ENUM.REGISTRATION
+          ? 'Registration'
+          : 'Choose a tariff plan'
+      }
+    >
+      <form
+        onSubmit={handleSubmit((data) =>
+          onSubmit({ ...data, selectedTariff: 0 })
+        )}
+        style={{ textAlign: 'left' }}
+      >
+        {step === STEPS_ENUM.REGISTRATION ? (
+          <SignUpForm
+            errors={errors}
+            control={control}
+            password={password}
+            isValid={isValid}
+            onNextClick={() => setStep(2)}
+          />
+        ) : (
+          <TariffForm
+            onSubmit={(selectedTariff) =>
+              onSubmit({ ...getValues(), selectedTariff: selectedTariff })
+            }
+          />
+        )}
+      </form>
+    </AuthCard>
   );
 }

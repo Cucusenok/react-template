@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 import { ChangePassword } from './ChangePassword';
 import { ForgotPassword } from './ForgotPassword';
@@ -6,17 +6,13 @@ import { Registration } from './Registration';
 import { SignIn } from './SignIn';
 
 export const Authentication = () => {
-  const [isAuth, setIsAuth] = useState<string>('SignIn');
-  console.log('isAuth', isAuth);
-
-  if (isAuth === 'SignIn') {
-    return <SignIn setIsAuth={setIsAuth} />;
-  }
-  if (isAuth === 'Registration') {
-    return <Registration setIsAuth={setIsAuth} />;
-  }
-  if (isAuth === 'ChangePassword') {
-    return <ChangePassword setIsAuth={setIsAuth} />;
-  }
-  return <ForgotPassword setIsAuth={setIsAuth} />;
+  return (
+    <Routes>
+      <Route index element={<Registration />} />
+      <Route path="sign-in" element={<SignIn />} />
+      <Route path="change-password" element={<ChangePassword />} />
+      <Route path="forgot-password" element={<ForgotPassword />} />
+      <Route path="*" element={<div>NO match</div>} />
+    </Routes>
+  );
 };
