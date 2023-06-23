@@ -1,7 +1,8 @@
 import { RequestLoader } from '@components/Loader/RequestLoader';
 import { useGetSpaceXSeoQuery } from '@gql/graphql';
 import React from 'react';
-import { MeetSpaceXSeoButtonProps, Button, CEOName, ErrorField } from '.';
+
+import { Button, CEOName, ErrorField, MeetSpaceXSeoButtonProps } from '.';
 
 export const MeetSpaceXSeoButton = ({ onClick }: MeetSpaceXSeoButtonProps) => {
   const { data, error, loading } = useGetSpaceXSeoQuery();

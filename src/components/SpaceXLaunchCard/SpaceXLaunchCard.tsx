@@ -1,20 +1,35 @@
-import { Card } from '@components/SpaceXLaunchCard/SpaceXLaunchCard.styles';
+import {
+  Card,
+  RowWithMediumSpacing,
+  RowWithSmallSpacing,
+  TopRow,
+} from '@components/SpaceXLaunchCard/SpaceXLaunchCard.styles';
+import { AccessTimeRounded, CurrencyRuble } from '@mui/icons-material';
+// import { useGetSpaceXLaunchesQuery } from "@gql/graphql";
+import { Typography } from '@mui/material';
 import React from 'react';
 
 export const SpaceXLaunchCard = () => {
-  const props = '';
+  // const { data, error, loading } = useGetSpaceXLaunchesQuery();
+
+  const name = 'Название';
   return (
     <Card>
-      <div>
-        <h3>Название</h3>
+      <TopRow>
+        <Typography variant="h3">{name}</Typography>
         <span>Хэштег</span>
-      </div>
-      <p>Какая то информация по теме или подробное описание этого объявления</p>
-      <div>
-        <span>icon Цена</span>
-        <span>icon Время публикации</span>
-      </div>
-      Some text, {props}
+      </TopRow>
+      <Typography>
+        Какая то информация по теме или подробное описание этого объявления
+      </Typography>
+      <RowWithMediumSpacing>
+        <RowWithSmallSpacing>
+          <CurrencyRuble fontSize="small" /> Цена
+        </RowWithSmallSpacing>
+        <RowWithSmallSpacing>
+          <AccessTimeRounded fontSize="small" /> Цена
+        </RowWithSmallSpacing>
+      </RowWithMediumSpacing>
     </Card>
   );
 };
