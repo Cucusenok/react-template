@@ -6,8 +6,7 @@ import {
 } from '@components/SpaceXLaunchCard/SpaceXLaunchCard.styles';
 import { SpaceXLaunchCardProps } from '@components/SpaceXLaunchCard/SpaceXLaunchCard.types';
 import { AccessTimeRounded, CurrencyRuble } from '@mui/icons-material';
-// import { useGetSpaceXLaunchesQuery } from "@gql/graphql";
-import { Typography } from '@mui/material';
+import { Chip, Typography } from '@mui/material';
 import React from 'react';
 
 export const SpaceXLaunchCard = ({
@@ -22,7 +21,7 @@ export const SpaceXLaunchCard = ({
       <Typography variant="h3" fontWeight="bold">
         {name}
       </Typography>
-      <span>{tag}</span>
+      <Chip label={tag} />
     </TopRow>
     <Typography mb={3}>{details || 'Описание не задано'}</Typography>
     <BottomRow>
