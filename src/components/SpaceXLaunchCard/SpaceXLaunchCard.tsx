@@ -1,12 +1,11 @@
+import { Chip } from '@components/Chip';
 import {
-  BottomRow,
   Card,
-  RowWithSmallSpacing,
-  TopRow,
+  StyledRow,
 } from '@components/SpaceXLaunchCard/SpaceXLaunchCard.styles';
 import { SpaceXLaunchCardProps } from '@components/SpaceXLaunchCard/SpaceXLaunchCard.types';
 import { AccessTimeRounded, CurrencyRuble } from '@mui/icons-material';
-import { Chip, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import React from 'react';
 
 export const SpaceXLaunchCard = ({
@@ -17,28 +16,28 @@ export const SpaceXLaunchCard = ({
   price,
 }: SpaceXLaunchCardProps) => (
   <Card>
-    <TopRow>
+    <StyledRow mb={8} gap={8}>
       <Typography variant="h3" fontWeight="bold">
         {name}
       </Typography>
-      <Chip label={tag} />
-    </TopRow>
+      {tag && <Chip label={tag} />}
+    </StyledRow>
     <Typography mb={3}>{details || 'Описание не задано'}</Typography>
-    <BottomRow>
+    <StyledRow gap={24}>
       {price && (
-        <RowWithSmallSpacing>
+        <StyledRow gap={8}>
           <CurrencyRuble fontSize="small" sx={{ color: '#B0B0B0' }} />
           <Typography variant="h3">{price.toLocaleString('ru-Ru')}</Typography>
-        </RowWithSmallSpacing>
+        </StyledRow>
       )}
       {date && (
-        <RowWithSmallSpacing>
+        <StyledRow gap={8}>
           <AccessTimeRounded fontSize="small" sx={{ color: '#B0B0B0' }} />
           <Typography variant="h3">
             {new Date(date).toLocaleDateString('ru-RU')}
           </Typography>
-        </RowWithSmallSpacing>
+        </StyledRow>
       )}
-    </BottomRow>
+    </StyledRow>
   </Card>
 );

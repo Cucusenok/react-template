@@ -21,6 +21,7 @@ function App() {
           <div className="App-grid">
             {data?.launches?.map((item) => (
               <SpaceXLaunchCard
+                key={item?.id}
                 id={item?.id}
                 name={item?.mission_name}
                 date={item?.launch_date_local}

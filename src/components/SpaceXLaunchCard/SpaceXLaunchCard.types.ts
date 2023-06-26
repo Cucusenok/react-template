@@ -6,3 +6,8 @@ export interface SpaceXLaunchCardProps {
   tag?: string | null;
   price?: number;
 }
+
+export interface StyledRowProps {
+  mb?: number;
+  gap?: number;
+}
