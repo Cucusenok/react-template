@@ -1,6 +1,6 @@
 import { Link, styled } from '@mui/material';
 
-export const TextLink = styled(Link)(() => ({
+export const TextLink = styled(Link)({
   textTransform: 'none',
   textDecoration: 'none',
   cursor: 'pointer',
@@ -8,4 +8,4 @@ export const TextLink = styled(Link)(() => ({
   '&:hover': {
     textDecoration: 'underline',
   },
-}));
+});

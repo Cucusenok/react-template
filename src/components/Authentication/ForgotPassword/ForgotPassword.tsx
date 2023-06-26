@@ -1,5 +1,6 @@
 import { PATHS } from '@common/constants';
 import { AuthCard } from '@components/Authentication/AuthCard/AuthCard';
+import { Box } from '@mui/system';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -39,36 +40,37 @@ export function ForgotPassword() {
 
   return (
     <AuthCard>
-      <form
-        onSubmit={handleSubmit((data) => onSubmit(data))}
-        style={{ textAlign: 'left' }}
-      >
-        <Input
-          name="email"
-          label="Email address"
-          size="medium"
-          margin="normal"
-          fullWidth
-          errorMessage={errors?.email?.message}
-          rules={emailRules}
-          control={control}
-        />
-        <Button
-          onClick={() => onSubmit(getValues())}
-          disabled={!isValid}
-          type="submit"
-          variant="contained"
-          sx={{ mt: 2 }}
-        >
-          Recover Password
-        </Button>
-        <Links>
-          <TextLink href={`${PATHS.AUTH}/${PATHS.SIGN_IN}`}>Sign in</TextLink>
-          <TextLink href={PATHS.AUTH}>Don`t have an account? Sign Up!</TextLink>
-        </Links>
-        <Divider text="Or continue with" />
-        <SocialsBox />
-      </form>
+      <Box component="div" sx={{ maxWidth: '350px' }}>
+        <form onSubmit={handleSubmit((data) => onSubmit(data))}>
+          <Input
+            name="email"
+            label="Email address"
+            size="medium"
+            margin="normal"
+            fullWidth
+            errorMessage={errors?.email?.message}
+            rules={emailRules}
+            control={control}
+          />
+          <Button
+            onClick={() => onSubmit(getValues())}
+            disabled={!isValid}
+            type="submit"
+            variant="contained"
+            sx={{ mt: 2 }}
+          >
+            Recover Password
+          </Button>
+          <Links>
+            <TextLink href={`${PATHS.AUTH}/${PATHS.SIGN_IN}`}>Sign in</TextLink>
+            <TextLink href={PATHS.AUTH}>
+              Don`t have an account? Sign Up!
+            </TextLink>
+          </Links>
+          <Divider text="Or continue with" />
+          <SocialsBox />
+        </form>
+      </Box>
     </AuthCard>
   );
 }

@@ -41,6 +41,7 @@ const selectItems = [
 
 enum STEPS_ENUM {
   REGISTRATION,
+  TARIFF,
 }
 
 const SignUpForm = ({
@@ -171,6 +172,7 @@ export function Registration() {
     setTimeout(() => {
       navigate(`${PATHS.AUTH}/${PATHS.SIGN_IN}`);
     }, 1000);
+    setStep(STEPS_ENUM.REGISTRATION);
   };
 
   const password = watch('password');
@@ -194,7 +196,7 @@ export function Registration() {
             control={control}
             password={password}
             isValid={isValid}
-            onNextClick={() => setStep(1)}
+            onNextClick={() => setStep(STEPS_ENUM.TARIFF)}
           />
         ) : (
           <TariffForm

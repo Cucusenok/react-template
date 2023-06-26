@@ -1,11 +1,11 @@
 import { Box, Divider, Typography, styled } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
-export const DividerBox = styled(Box)(() => ({
+export const DividerBox = styled(Box)({
   width: '100%',
   height: '100%',
   position: 'relative',
-}));
+});
 
 export const DividerStyled = styled(Divider)(({ theme }) => ({
   width: '100%',
@@ -13,7 +13,7 @@ export const DividerStyled = styled(Divider)(({ theme }) => ({
   marginBottom: theme.spacing(4),
 }));
 
-export const DividerTextBox = styled(Box)(() => ({
+export const DividerTextBox = styled(Box)({
   left: 0,
   right: 0,
   top: '-10px',
@@ -22,7 +22,7 @@ export const DividerTextBox = styled(Box)(() => ({
   justifyContent: 'center',
   fontSize: '0.9rem',
   position: 'absolute',
-}));
+});
 
 export const Text = styled(Typography)(({ theme }) => ({
   fontSize: '0.9rem',
