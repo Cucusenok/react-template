@@ -32,6 +32,7 @@ module.exports = {
       map: [
         ['@components/*', './components/*'],
         ['@gql/*', './gql/*'],
+        ['@common/*', './common/*'],
       ],
     },
   },
@@ -47,7 +48,12 @@ module.exports = {
   ],
   rules: {
     'no-var': 'warn',
+    'no-else-return': 'off',
     'import/no-unresolved': 'off',
+    'arrow-body-style': 'off',
+    'no-shadow': 'off',
+    'object-shorthand': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
