@@ -19,17 +19,6 @@ export const Input = (props: InputProps) => {
     disabled,
   } = props;
 
-  const required = rules?.required
-    ? { required: true, message: rules.required.message }
-    : undefined;
-  const minLength = rules?.minLength
-    ? { minLength: rules.minLength.value, message: rules.minLength.message }
-    : undefined;
-  const pattern = rules?.pattern
-    ? { pattern: rules.pattern.value, message: rules.pattern.message }
-    : undefined;
-  const rule = { ...required, ...minLength, ...pattern };
-
   return (
     <Controller
       render={({ field: { value, onBlur, onChange } }) => (
@@ -46,12 +35,15 @@ export const Input = (props: InputProps) => {
           disabled={disabled}
         />
       )}
-      rules={{
-        ...rule,
-        validate: password
-          ? (value) => value === password || 'Passwords do not match'
-          : undefined,
-      }}
+      rules={
+        password
+          ? {
+              ...rules,
+              validate: (value) =>
+                value === password || 'Passwords do not match',
+            }
+          : { ...rules }
+      }
       control={control}
       name={name}
     />

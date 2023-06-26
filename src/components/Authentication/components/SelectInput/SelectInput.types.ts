@@ -1,6 +1,8 @@
 import { FeaturesType } from '@components/Authentication/Registration';
 import { Control } from 'react-hook-form';
 
+import { FieldRules } from '..';
+
 export interface SelectProps {
   label: string;
   name: string;
@@ -9,7 +11,7 @@ export interface SelectProps {
   type?: string;
   errorMessage?: string;
   fullWidth?: boolean;
-  required?: boolean;
+  rules?: FieldRules;
   control: Control<any>;
   selectItems: FeaturesType[];
 }

@@ -17,7 +17,8 @@ export const SelectInput = (props: SelectProps) => {
     size,
     color,
     fullWidth,
-    required,
+    errorMessage,
+    rules,
     control,
     selectItems,
   } = props;
@@ -47,11 +48,12 @@ export const SelectInput = (props: SelectProps) => {
               </MenuItem>
             ))}
           </Select>
+          {errorMessage && <span style={{ color: 'red' }}>{errorMessage}</span>}
         </FormControl>
       )}
       name={name}
       control={control}
-      rules={{ required }}
+      rules={rules}
     />
   );
 };

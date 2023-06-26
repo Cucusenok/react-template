@@ -1,12 +1,11 @@
+import { PATHS } from '@common/constants';
 import { AuthCard } from '@components/Authentication/AuthCard/AuthCard';
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FieldErrors } from 'react-hook-form/dist/types/errors';
-import { Control } from 'react-hook-form/dist/types/form';
 import { useNavigate } from 'react-router-dom';
 
-import { FormValues, TariffType } from '.';
+import { FormValues, SignUpFormProps, TariffFormProps, TariffType } from '.';
 import {
   Button,
   Divider,
@@ -21,6 +20,7 @@ import {
   confirmPasswordRules,
   emailRules,
   passwordRules,
+  typeRules,
 } from '../helpers/validationRules';
 import { tariffData } from './mockData';
 
@@ -43,13 +43,6 @@ enum STEPS_ENUM {
   REGISTRATION,
 }
 
-interface SignUpFormProps {
-  errors: FieldErrors<FormValues>;
-  control: Control<FormValues>;
-  password: string;
-  isValid: boolean;
-  onNextClick: () => void;
-}
 const SignUpForm = ({
   errors,
   control,
@@ -58,7 +51,7 @@ const SignUpForm = ({
   onNextClick,
 }: SignUpFormProps) => {
   return (
-    <>
+    <Box component="div" sx={{ maxWidth: '350px' }}>
       <Input
         name="email"
         label="Email address"
@@ -94,12 +87,13 @@ const SignUpForm = ({
       <SelectInput
         name="accountType"
         label="Account type"
-        required
         color="primary"
         size="medium"
         fullWidth
+        errorMessage={errors?.accountType?.message}
         control={control}
         selectItems={selectItems}
+        rules={typeRules}
       />
       <Button
         onClick={onNextClick}
@@ -111,26 +105,25 @@ const SignUpForm = ({
         NEXT
       </Button>
       <Links>
-        <TextLink href="/auth/sign-in">Already have an account?</TextLink>
+        <TextLink href={`${PATHS.AUTH}/${PATHS.SIGN_IN}`}>
+          Already have an account?
+        </TextLink>
       </Links>
       <Divider text="Or continue with" />
       <SocialsBox />
-    </>
+    </Box>
   );
 };
 
-interface TariffFormProps {
-  onSubmit: (selectedTariff: number) => void;
-}
-
 const TariffForm = ({ onSubmit }: TariffFormProps) => {
-  const [selectedTariff, setSelectedTariff] = useState<null | number>(0);
+  const [selectedTariff, setSelectedTariff] = useState<null | number>(null);
+  const isSelected = selectedTariff || selectedTariff === 0;
 
   return (
-    <>
+    <Box component="div" sx={{ maxWidth: '800px' }}>
       <Grid spacing={2} container>
         {tariffData.map((tariff: TariffType) => (
-          <Grid key={tariff.id} xs={6} item>
+          <Grid key={tariff.id} xs={12} sm={6} item minWidth="250px">
             <TariffCardItem
               variant={tariff.id === selectedTariff ? 'contained' : 'outlined'}
               setSelectedTariff={setSelectedTariff}
@@ -145,11 +138,11 @@ const TariffForm = ({ onSubmit }: TariffFormProps) => {
         type="submit"
         variant="contained"
         fullWidth
-        onClick={() => selectedTariff && onSubmit(selectedTariff)}
+        onClick={() => isSelected && onSubmit(selectedTariff)}
       >
         CONFIRM
       </Button>
-    </>
+    </Box>
   );
 };
 
@@ -162,7 +155,7 @@ export function Registration() {
     formState: { errors, isValid },
     getValues,
   } = useForm<FormValues>({
-    mode: 'onBlur',
+    mode: 'all',
     defaultValues: {
       email: '',
       password: '',
@@ -176,7 +169,7 @@ export function Registration() {
   const onSubmit = (data: FormValues & { selectedTariff: number }) => {
     console.log('formData:', data);
     setTimeout(() => {
-      navigate('/auth/sign-in');
+      navigate(`${PATHS.AUTH}/${PATHS.SIGN_IN}`);
     }, 1000);
   };
 
@@ -194,7 +187,6 @@ export function Registration() {
         onSubmit={handleSubmit((data) =>
           onSubmit({ ...data, selectedTariff: 0 })
         )}
-        style={{ textAlign: 'left' }}
       >
         {step === STEPS_ENUM.REGISTRATION ? (
           <SignUpForm
@@ -202,7 +194,7 @@ export function Registration() {
             control={control}
             password={password}
             isValid={isValid}
-            onNextClick={() => setStep(2)}
+            onNextClick={() => setStep(1)}
           />
         ) : (
           <TariffForm

@@ -1,28 +1,25 @@
-import {
-  EmailPatternRule,
-  MinLengthRule,
-  RequiredRule,
-} from './validationRules.types';
+import { ValidationRule } from 'react-hook-form';
 
-const required: RequiredRule = {
+const required: ValidationRule<boolean> = {
   value: true,
   message: 'Required field',
 };
 
-const minLength: MinLengthRule = {
+const minLength: ValidationRule<number> = {
   value: 6,
   message: 'Minimum of 6 characters',
 };
 
-const emailPattern: EmailPatternRule = {
+const emailPattern: ValidationRule<RegExp> = {
   message: 'Enter the correct email',
   value:
-    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 };
 
 export const confirmPasswordRules = {
   required,
   minLength,
 };
-export const emailRules = { required, minLength, pattern: emailPattern };
+export const emailRules = { required, pattern: emailPattern };
 export const passwordRules = { required, minLength };
+export const typeRules = { required };

@@ -1,3 +1,6 @@
+import { FieldErrors } from 'react-hook-form/dist/types/errors';
+import { Control } from 'react-hook-form/dist/types/form';
+
 export type FormValues = {
   confirmPassword: string;
   accountType: string;
@@ -16,3 +19,15 @@ export type TariffType = {
   price: string;
   id: number;
 };
+
+export interface SignUpFormProps {
+  errors: FieldErrors<FormValues>;
+  control: Control<FormValues>;
+  password: string;
+  isValid: boolean;
+  onNextClick: () => void;
+}
+
+export interface TariffFormProps {
+  onSubmit: (selectedTariff: number) => void;
+}

@@ -1,24 +1,9 @@
-import { Control } from 'react-hook-form';
-
-export interface RequiredRule {
-  value?: true;
-  message?: string;
-}
-
-export interface MinLengthRule {
-  value?: number;
-  message?: string;
-}
-
-export interface EmailPatternRule {
-  message?: string;
-  value?: RegExp;
-}
+import { Control, ValidationRule } from 'react-hook-form';
 
 export interface FieldRules {
-  required?: RequiredRule;
-  minLength?: MinLengthRule;
-  pattern?: EmailPatternRule;
+  required?: ValidationRule<boolean>;
+  minLength?: ValidationRule<number>;
+  pattern?: ValidationRule<RegExp>;
 }
 
 export interface InputProps {

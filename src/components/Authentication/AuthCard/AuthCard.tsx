@@ -13,7 +13,16 @@ export type AuthCardProps = React.PropsWithChildren &
   };
 export const AuthCard = ({ children, title = 'Sign In' }: AuthCardProps) => {
   return (
-    <Container component="main" maxWidth="xs">
+    <Container
+      component="main"
+      sx={{
+        width: 'auto',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
+      }}
+    >
       <Card>
         <CardContainer>
           <Logo>Logo</Logo>

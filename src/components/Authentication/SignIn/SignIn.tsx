@@ -1,3 +1,4 @@
+import { PATHS } from '@common/constants';
 import { AuthCard } from '@components/Authentication/AuthCard/AuthCard';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -37,7 +38,7 @@ export function SignIn() {
     <AuthCard>
       <form
         onSubmit={handleSubmit((data) => onSubmit(data))}
-        style={{ textAlign: 'left' }}
+        style={{ maxWidth: '350px' }}
       >
         <Input
           name="email"
@@ -77,8 +78,10 @@ export function SignIn() {
           LOGIN
         </Button>
         <Links>
-          <TextLink href="/auth/forgot-password">Forgot password?</TextLink>
-          <TextLink href="/auth">Don`t have an account? Sign Up!</TextLink>
+          <TextLink href={`${PATHS.AUTH}/${PATHS.FORGOT_PASSWORD}`}>
+            Forgot password?
+          </TextLink>
+          <TextLink href={PATHS.AUTH}>Don`t have an account? Sign Up!</TextLink>
         </Links>
         <Divider text="Or continue with" />
         <SocialsBox />

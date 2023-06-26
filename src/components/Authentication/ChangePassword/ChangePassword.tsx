@@ -1,3 +1,4 @@
+import { PATHS } from '@common/constants';
 import { AuthCard } from '@components/Authentication/AuthCard/AuthCard';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -37,7 +38,7 @@ export function ChangePassword() {
   const onSubmit = (data: FormValues) => {
     console.log(data);
     setTimeout(() => {
-      navigate(`/auth/sign-in`);
+      navigate(`${PATHS.AUTH}/${PATHS.SIGN_IN}`);
     }, 1000);
   };
 
@@ -82,7 +83,7 @@ export function ChangePassword() {
           Change password
         </Button>
         <Links>
-          <TextLink href="/auth/sign-in">Sign in</TextLink>
+          <TextLink href={`${PATHS.AUTH}/${PATHS.SIGN_IN}`}>Sign in</TextLink>
         </Links>
         <Divider text="Or continue with" />
         <SocialsBox />

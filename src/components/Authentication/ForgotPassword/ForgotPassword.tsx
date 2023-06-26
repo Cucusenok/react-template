@@ -1,3 +1,4 @@
+import { PATHS } from '@common/constants';
 import { AuthCard } from '@components/Authentication/AuthCard/AuthCard';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -32,7 +33,7 @@ export function ForgotPassword() {
   const onSubmit = (data: FormValues) => {
     console.log(data);
     setTimeout(() => {
-      navigate(`/auth/change-password`);
+      navigate(`${PATHS.AUTH}/${PATHS.CHANGE_PASSWORD}`);
     }, 1000);
   };
 
@@ -62,8 +63,8 @@ export function ForgotPassword() {
           Recover Password
         </Button>
         <Links>
-          <TextLink href="/auth/sign-in">Sign in</TextLink>
-          <TextLink href="/auth">Don`t have an account? Sign Up!</TextLink>
+          <TextLink href={`${PATHS.AUTH}/${PATHS.SIGN_IN}`}>Sign in</TextLink>
+          <TextLink href={PATHS.AUTH}>Don`t have an account? Sign Up!</TextLink>
         </Links>
         <Divider text="Or continue with" />
         <SocialsBox />

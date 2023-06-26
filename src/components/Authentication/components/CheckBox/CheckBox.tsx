@@ -6,7 +6,6 @@ import { CheckBoxProps } from '.';
 
 export const CheckBox = (props: CheckBoxProps) => {
   const { label, name, size, required, control, disabled } = props;
-  console.log(control);
 
   return (
     <Controller
