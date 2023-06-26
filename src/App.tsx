@@ -1,17 +1,14 @@
-import { MeetSpaceXSeoButton } from '@components/MeetSpaceXSeoButton';
-import { SpaceXLaunchesList } from '@components/SpaceXLaunchesList';
+import { ROUTES } from '@common/router';
 import React from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import './App.css';
 
 function App() {
+  const router = createBrowserRouter(ROUTES);
   return (
     <div className="App">
-      <p>Иллюстрация работы компонента MeetSpaceXSeoButton:</p>
-      <MeetSpaceXSeoButton />
-
-      <p>Иллюстрация работы компонента SpaceXLaunchCard:</p>
-      <SpaceXLaunchesList />
+      <RouterProvider router={router} />
     </div>
   );
 }

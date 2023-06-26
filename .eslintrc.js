@@ -33,6 +33,7 @@ module.exports = {
       map: [
         ['@components/*', './components/*'],
         ['@gql/*', './gql/*'],
+        ['@common/*', './common/*'],
       ],
     },
   },
@@ -48,7 +49,12 @@ module.exports = {
   ],
   rules: {
     'no-var': 'warn',
+    'no-else-return': 'off',
     'import/no-unresolved': 'off',
+    'arrow-body-style': 'off',
+    'no-shadow': 'off',
+    'object-shorthand': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
@@ -59,7 +65,6 @@ module.exports = {
     'guard-for-in': 'off',
     'no-await-in-loop': 'off',
     'no-restricted-syntax': 'off',
-    'react/jsx-props-no-spreading': 'off',
     'react-hooks/exhaustive-deps': 'error',
     'react/destructuring-assignment': 'off',
     'react/function-component-definition': 'off',

@@ -3,7 +3,8 @@
     "baseUrl": "./src/",
     "paths": {
       "@components/*": ["./components/*"],
-      "@gql/*": ["./gql/*"]
+      "@gql/*": ["./gql/*"],
+      "@common/*": ["./common/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
