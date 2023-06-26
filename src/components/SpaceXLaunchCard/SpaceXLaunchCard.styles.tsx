@@ -1,5 +1,10 @@
-import { StyledRowProps } from '@components/SpaceXLaunchCard/SpaceXLaunchCard.types';
 import { styled } from '@mui/system';
+import { CSSProperties } from 'react';
+
+export interface StyledRowProps {
+  marginBottom?: CSSProperties['marginBottom'];
+  gap?: CSSProperties['gap'];
+}
 
 export const Card = styled('div')(() => ({
   display: 'flex',
@@ -17,9 +22,11 @@ export const Card = styled('div')(() => ({
   },
 }));
 
-export const StyledRow = styled('div')(({ mb, gap }: StyledRowProps) => ({
-  display: 'flex',
-  alignItems: 'center',
-  marginBottom: mb,
-  gap,
-}));
+export const StyledRow = styled('div')<StyledRowProps>(
+  ({ marginBottom, gap }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom,
+    gap,
+  })
+);

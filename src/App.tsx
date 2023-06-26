@@ -23,10 +23,10 @@ function App() {
               <SpaceXLaunchCard
                 key={item?.id}
                 id={item?.id}
-                name={item?.mission_name}
-                date={item?.launch_date_local}
+                mission_name={item?.mission_name}
+                launch_date_local={item?.launch_date_local}
                 details={item?.details}
-                tag={item?.rocket?.rocket_name}
+                rocket={{ rocket_name: item?.rocket?.rocket_name }}
                 price={24000}
               />
             ))}
