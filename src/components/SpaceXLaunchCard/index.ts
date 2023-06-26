@@ -1,3 +1,3 @@
 export * from './SpaceXLaunchCard';
-export * from './SpaceXLaunchCard.gql';
+export * from '../SpaceXLaunchesList/SpaceXLaunchesList.gql';
 export * from './SpaceXLaunchCard.styles';

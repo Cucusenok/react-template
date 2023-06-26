@@ -25,7 +25,7 @@ it('renders all props', async () => {
     price: 12000,
   };
   render(<SpaceXLaunchCard {...props} />);
-  screen.debug();
+
   for (const prop in props) {
     expect(await screen.findByText(prop)).toBeInTheDocument();
   }
