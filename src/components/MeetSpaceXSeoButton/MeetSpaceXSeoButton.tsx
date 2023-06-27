@@ -1,8 +1,15 @@
-import { RequestLoader } from '@components/Loader/RequestLoader';
+import {
+  ErrorComponentProps,
+  RequestLoader,
+} from '@components/Loader/RequestLoader';
 import { useGetSpaceXSeoQuery } from '@gql/graphql';
 import React from 'react';
 
-import { Button, CEOName, ErrorField, MeetSpaceXSeoButtonProps } from '.';
+import { Button, CEOName, MeetSpaceXSeoButtonProps } from '.';
+
+const Error = ({ error }: ErrorComponentProps) => (
+  <div>{JSON.stringify(error)}</div>
+);
 
 export const MeetSpaceXSeoButton = ({ onClick }: MeetSpaceXSeoButtonProps) => {
   const { data, error, loading } = useGetSpaceXSeoQuery();
@@ -12,13 +19,9 @@ export const MeetSpaceXSeoButton = ({ onClick }: MeetSpaceXSeoButtonProps) => {
         onClick && data?.company?.ceo && onClick(data?.company?.ceo)
       }
     >
-      <RequestLoader loading={loading} error={error}>
+      <RequestLoader loading={loading} error={error} ErrorComponent={Error}>
         Meet SpaceX CEO:
-        {error ? (
-          <ErrorField>{JSON.stringify(error)}</ErrorField>
-        ) : (
-          <CEOName>{data?.company?.ceo}</CEOName>
-        )}
+        <CEOName>{data?.company?.ceo}</CEOName>
       </RequestLoader>
     </Button>
   );

@@ -49,16 +49,35 @@ const mocks:
   },
 ];
 
-it('renders without error', async () => {
-  render(
+it('should show loader and cards', async () => {
+  const { container } = render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <SpaceXLaunchesList />
     </MockedProvider>
   );
 
+  expect(
+    await container.querySelector('.MuiCircularProgress-root')
+  ).toBeInTheDocument();
+
   expect(await screen.findByText('FalconSat')).toBeInTheDocument();
   expect(await screen.findByText('DemoSat')).toBeInTheDocument();
   expect(await screen.findByText('Trailblazer')).toBeInTheDocument();
+});
 
-  expect(await screen.findByText('Loading error')).not.toBeInTheDocument();
+it('should show error messages', async () => {
+  const errorMock = {
+    request: {
+      query: GetSpaceXLaunchesQuery,
+    },
+    error: new Error('An error occurred'),
+  };
+
+  render(
+    <MockedProvider mocks={[errorMock]} addTypename={false}>
+      <SpaceXLaunchesList />
+    </MockedProvider>
+  );
+
+  expect(await screen.findByText('An error occurred')).toBeInTheDocument();
 });

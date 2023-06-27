@@ -9,7 +9,7 @@ export const SpaceXLaunchesList = () => {
 
   return (
     <RequestLoader loading={loading} error={error}>
-      {!error ? (
+      {!error && (
         <Grid>
           {data?.launches?.map((item) => (
             <SpaceXLaunchCard
@@ -23,8 +23,6 @@ export const SpaceXLaunchesList = () => {
             />
           ))}
         </Grid>
-      ) : (
-        <p>{JSON.stringify(error)}</p>
       )}
     </RequestLoader>
   );
