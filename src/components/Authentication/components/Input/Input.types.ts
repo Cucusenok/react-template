@@ -1,4 +1,9 @@
-import { Control, ValidationRule } from 'react-hook-form';
+import {
+  FieldValues,
+  UseControllerProps,
+  ValidationRule,
+} from 'react-hook-form';
+import { FieldPath } from 'react-hook-form/dist/types';
 
 export interface FieldRules {
   required?: ValidationRule<boolean>;
@@ -6,16 +11,16 @@ export interface FieldRules {
   pattern?: ValidationRule<RegExp>;
 }
 
-export interface InputProps {
+export interface InputProps<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+> extends UseControllerProps<TFieldValues, TName> {
   label: string;
-  name: string;
   size?: 'small' | 'medium';
   margin?: 'dense' | 'normal' | 'none';
   type?: string;
   errorMessage?: string;
   fullWidth?: boolean;
-  rules?: FieldRules;
-  control?: Control<any>;
   password?: string;
   disabled?: boolean;
 }

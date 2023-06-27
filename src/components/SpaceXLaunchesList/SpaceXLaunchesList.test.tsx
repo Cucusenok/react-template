@@ -1,15 +1,14 @@
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { SpaceXLaunchesList } from '@components/SpaceXLaunchesList/SpaceXLaunchesList';
-import { GetSpaceXLaunchesQuery } from '@components/SpaceXLaunchesList/SpaceXLaunchesList.gql';
+import { GetSpaceXLaunchesQuery as RawQuery } from '@components/SpaceXLaunchesList/SpaceXLaunchesList.gql';
+import { GetSpaceXLaunchesQuery } from '@gql/graphql';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-const mocks:
-  | readonly MockedResponse<Record<string, any>, Record<string, any>>[]
-  | undefined = [
+const mocks: readonly MockedResponse<GetSpaceXLaunchesQuery>[] | undefined = [
   {
     request: {
-      query: GetSpaceXLaunchesQuery,
+      query: RawQuery,
     },
     result: {
       data: {
