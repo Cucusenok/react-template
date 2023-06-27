@@ -8,8 +8,5 @@ export const MainPage = () => (
     <header className="App-header">
       <MeetSpaceXSeoButton />
     </header>
-    <div>
-      <a href="https://google.com">Какая-то ссылк</a>
-    </div>
   </div>
 );

@@ -1,10 +1,14 @@
 import { TextField } from '@mui/material';
 import React from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
+import { FieldPath } from 'react-hook-form/dist/types';
 
 import { InputProps } from '.';
 
-export const Input = (props: InputProps) => {
+export function Input<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>
+>(props: InputProps<TFieldValues, TName>) {
   const {
     label,
     name,
@@ -48,4 +52,4 @@ export const Input = (props: InputProps) => {
       name={name}
     />
   );
-};
+}

@@ -39,7 +39,7 @@ export const SelectInput = (props: SelectProps) => {
             label={label}
             color={color}
             size={size}
-            value={value}
+            value={value as string | undefined}
             fullWidth={fullWidth}
           >
             {selectItems.map((item) => (

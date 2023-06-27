@@ -1,8 +1,9 @@
 import { PATHS } from '@common/constants';
 import { AuthCard } from '@components/Authentication/AuthCard/AuthCard';
+import { TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 
 import { FormValues } from '.';
 import {
@@ -32,7 +33,7 @@ export function SignIn() {
   });
 
   const onSubmit = (data: FormValues) => {
-    console.log('formData:', data);
+    JSON.stringify(data);
   };
 
   return (
@@ -60,6 +61,26 @@ export function SignIn() {
             rules={passwordRules}
             control={control}
           />
+
+          <Controller
+            render={({ field: { value, onBlur, onChange } }) => (
+              <TextField
+                helperText={
+                  <span style={{ color: 'red' }}>
+                    {errors?.password?.message}
+                  </span>
+                }
+                label="pass"
+                onChange={onChange}
+                onBlur={onBlur}
+                value={value}
+              />
+            )}
+            rules={passwordRules}
+            control={control}
+            name="password"
+          />
+
           <CheckBox
             name="rememberMe"
             label="Remember me"

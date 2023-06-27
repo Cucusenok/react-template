@@ -1298,6 +1298,23 @@ export type GetSpaceXSeoQuery = {
   company?: { __typename?: 'Info'; ceo?: string | null } | null;
 };
 
+export type GetSpaceXLaunchesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetSpaceXLaunchesQuery = {
+  __typename?: 'Query';
+  launches?: Array<{
+    __typename?: 'Launch';
+    id?: string | null;
+    details?: string | null;
+    mission_name?: string | null;
+    launch_date_local?: any | null;
+    rocket?: {
+      __typename?: 'LaunchRocket';
+      rocket_name?: string | null;
+    } | null;
+  } | null> | null;
+};
+
 export const GetSpaceXSeoDocument = gql`
   query GetSpaceXSeo {
     company {
@@ -1354,4 +1371,67 @@ export type GetSpaceXSeoLazyQueryHookResult = ReturnType<
 export type GetSpaceXSeoQueryResult = Apollo.QueryResult<
   GetSpaceXSeoQuery,
   GetSpaceXSeoQueryVariables
+>;
+export const GetSpaceXLaunchesDocument = gql`
+  query GetSpaceXLaunches {
+    launches {
+      id
+      details
+      mission_name
+      launch_date_local
+      rocket {
+        rocket_name
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetSpaceXLaunchesQuery__
+ *
+ * To run a query within a React component, call `useGetSpaceXLaunchesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSpaceXLaunchesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSpaceXLaunchesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSpaceXLaunchesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetSpaceXLaunchesQuery,
+    GetSpaceXLaunchesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetSpaceXLaunchesQuery,
+    GetSpaceXLaunchesQueryVariables
+  >(GetSpaceXLaunchesDocument, options);
+}
+export function useGetSpaceXLaunchesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetSpaceXLaunchesQuery,
+    GetSpaceXLaunchesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetSpaceXLaunchesQuery,
+    GetSpaceXLaunchesQueryVariables
+  >(GetSpaceXLaunchesDocument, options);
+}
+export type GetSpaceXLaunchesQueryHookResult = ReturnType<
+  typeof useGetSpaceXLaunchesQuery
+>;
+export type GetSpaceXLaunchesLazyQueryHookResult = ReturnType<
+  typeof useGetSpaceXLaunchesLazyQuery
+>;
+export type GetSpaceXLaunchesQueryResult = Apollo.QueryResult<
+  GetSpaceXLaunchesQuery,
+  GetSpaceXLaunchesQueryVariables
 >;

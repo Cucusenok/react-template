@@ -9,6 +9,18 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   plugins: ['import', 'react', 'react-hooks', '@typescript-eslint'],
+  globals: {
+    React: true,
+    google: true,
+    mount: true,
+    mountWithRouter: true,
+    shallow: true,
+    shallowWithRouter: true,
+    context: true,
+    expect: true,
+    jsdom: true,
+    JSX: true,
+  },
   ignorePatterns: [
     'README.MD',
     'graphql.tsx',
@@ -23,6 +35,7 @@ module.exports = {
     '*.css',
     '*.mdx',
     '*.stories.ts',
+    '*.html',
   ],
   settings: {
     node: {
@@ -60,11 +73,16 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/jsx-no-useless-fragment': 'off',
     'import/order': 'off',
+    camelcase: 'off',
+    'guard-for-in': 'off',
+    'no-await-in-loop': 'off',
+    'no-restricted-syntax': 'off',
     'react-hooks/exhaustive-deps': 'error',
     'react/destructuring-assignment': 'off',
     'react/function-component-definition': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-explicit-any': ['error'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'react/jsx-filename-extension': [
       2,
