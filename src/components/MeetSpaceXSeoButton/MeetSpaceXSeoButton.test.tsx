@@ -1,15 +1,14 @@
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
+import { GetSpaceXSeoQuery } from '@gql/graphql';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import { GetSpaceXSeoQuery, MeetSpaceXSeoButton } from '.';
+import { MeetSpaceXSeoButton, GetSpaceXSeoQuery as RawQuery } from '.';
 
-const mocks:
-  | readonly MockedResponse<Record<string, any>, Record<string, any>>[]
-  | undefined = [
+const mocks: readonly MockedResponse<GetSpaceXSeoQuery>[] | undefined = [
   {
     request: {
-      query: GetSpaceXSeoQuery,
+      query: RawQuery,
     },
     result: {
       data: {

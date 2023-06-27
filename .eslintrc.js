@@ -70,6 +70,7 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-explicit-any': ['error'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'react/jsx-filename-extension': [
       2,
