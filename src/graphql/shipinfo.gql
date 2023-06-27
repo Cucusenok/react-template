@@ -1,0 +1,8 @@
+query SpaceXShipsInfo {
+  ships {
+    id
+    name
+    image
+    type
+  }
+}
