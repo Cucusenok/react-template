@@ -67,7 +67,7 @@ it('should show loader and cards', async () => {
 it('should show error messages', async () => {
   const errorMock = {
     request: {
-      query: GetSpaceXLaunchesQuery,
+      query: RawQuery,
     },
     error: new Error('An error occurred'),
   };
